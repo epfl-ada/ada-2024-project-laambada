@@ -17,6 +17,3 @@ venv.bak/
 
 # macOS
 .DS_Store
-
-# Big files
-data/

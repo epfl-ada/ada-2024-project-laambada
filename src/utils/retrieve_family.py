@@ -1,3 +1,10 @@
+'''
+File name: retrieve_family.py
+Author: Alexandre Sallinen
+Date created: 14 November 2024
+Date last modified: 15 November 2024
+Python Version: 3.7
+'''
 import aiohttp
 import asyncio
 from tqdm import tqdm
@@ -5,7 +12,9 @@ from typing import List, Dict
 import logging
 
 async def fetch_protein_family(session: aiohttp.ClientSession, protein_id: str) -> tuple:
-    """Fetch family information for a single protein."""
+    '''
+    Fetch protein family information from the Uniprot API.
+    '''
     url = f"https://rest.uniprot.org/uniprotkb/search?query={protein_id}&fields=xref_panther"
     try:
         async with session.get(url) as response:
@@ -25,9 +34,9 @@ async def fetch_protein_family(session: aiohttp.ClientSession, protein_id: str) 
         return protein_id, []
 
 async def retrieve_family(id_list: List[str]) -> Dict[str, list]:
-    """
+    '''
     Asynchronously retrieve family information for multiple proteins.
-    """
+    '''
     async with aiohttp.ClientSession(
         connector=aiohttp.TCPConnector(limit=50),  # Connection pooling
         timeout=aiohttp.ClientTimeout(total=30)
@@ -40,5 +49,7 @@ async def retrieve_family(id_list: List[str]) -> Dict[str, list]:
         return {pid: families for pid, families in results if families}
 
 def get_protein_families(id_list: List[str]) -> Dict[str, list]:
-    """Synchronous wrapper for the async function."""
+    '''
+    Synchronous wrapper for the async function.
+    '''
     return asyncio.run(retrieve_family(id_list))
