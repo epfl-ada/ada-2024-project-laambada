@@ -10,7 +10,7 @@ We will explore the landscape of ligands available for these targets, hunting fo
 ## Research Questions
 - How similar/diverse, and specific, are the ligands of the Tyrosine Kinase protein family?
 - What structural features in ligands are associated with better binding affinities?
-- Can we use ML models to …?
+- Will ML based model provide enough information on the kind of structures that make a ligand bind ? Can we leverage it to recreate new ligands ?
 
 ---
 
