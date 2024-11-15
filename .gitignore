@@ -20,4 +20,6 @@ venv.bak/
 
 # Some data
 ./src/data/BindingDB_sample.tsv
-./src/data/columns.csv
+./src/data/columns.csvdata/
+.DS_Store
+**/__pycache__/
