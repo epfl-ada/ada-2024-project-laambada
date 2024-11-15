@@ -17,3 +17,7 @@ venv.bak/
 
 # macOS
 .DS_Store
+
+# Some data
+./src/data/BindingDB_sample.tsv
+./src/data/columns.csv
