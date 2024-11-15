@@ -1,42 +1,44 @@
-'''
-File name: retrieve_family.py
-Author: Aygul Bayramova
-Date created: 14 November 2024
-Date last modified: 14 November 2024
-Python Version: 3.7
-'''
-import requests
+import aiohttp
+import asyncio
 from tqdm import tqdm
+from typing import List, Dict
+import logging
 
-def retrieve_family(id_list):
-    '''
-    This function retrieves the family information of the proteins
-    from the Uniprot database using the Uniprot API.
-    :param id_list: A list of UniProt IDs
-    :return: A dictionary where the keys are the UniProt IDs and the values are the family names
-    '''
-    false_count = 0
-    family_dict = {}
-    for test_id in tqdm(id_list):
-        response = requests.get(
-            f"https://rest.uniprot.org/uniprotkb/search?query={test_id}&fields=xref_panther",
-            headers={"Accept": "application/json"}
-        )
-        if response.status_code == 200:
-            results = response.json().get("results", [])
-            for dic in results:
-                curr = dic.get("uniProtKBCrossReferences", False)
-                if curr:
-                    for ref in curr:
-                        if ref.get("database") == "PANTHER":
-                            if not (":" in ref.get("id") ): # Check if this is a sub family or family
-                                properties = ref.get("properties")
-                                for el in properties:
-                                    if el.get("key") == "EntryName":
-                                        family_dict[test_id] = el.get('value')
-        else:
-            print(f"Error: {response.status_code}, {response.text}")
-            false_count += 1
+async def fetch_protein_family(session: aiohttp.ClientSession, protein_id: str) -> tuple:
+    """Fetch family information for a single protein."""
+    url = f"https://rest.uniprot.org/uniprotkb/search?query={protein_id}&fields=xref_panther"
+    try:
+        async with session.get(url) as response:
+            if response.status == 200:
+                data = await response.json()
+                families = []
+                for result in data.get("results", []):
+                    for ref in result.get("uniProtKBCrossReferences", []):
+                        if ref.get("database") == "PANTHER" and ":" not in ref.get("id", ""):
+                            for prop in ref.get("properties", []):
+                                if prop.get("key") == "EntryName":
+                                    families.append(prop.get("value"))
+                return protein_id, families
+            return protein_id, []
+    except Exception as e:
+        logging.error(f"Error fetching {protein_id}: {response.status}")
+        return protein_id, []
 
-    print(f"Number of failed requests: {false_count}")
-    return family_dict
+async def retrieve_family(id_list: List[str]) -> Dict[str, list]:
+    """
+    Asynchronously retrieve family information for multiple proteins.
+    """
+    async with aiohttp.ClientSession(
+        connector=aiohttp.TCPConnector(limit=50),  # Connection pooling
+        timeout=aiohttp.ClientTimeout(total=30)
+    ) as session:
+        tasks = [fetch_protein_family(session, pid) for pid in id_list]
+        results = []
+        for future in tqdm(asyncio.as_completed(tasks), total=len(tasks)):
+            results.append(await future)
+        
+        return {pid: families for pid, families in results if families}
+
+def get_protein_families(id_list: List[str]) -> Dict[str, list]:
+    """Synchronous wrapper for the async function."""
+    return asyncio.run(retrieve_family(id_list))
