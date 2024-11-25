@@ -23,3 +23,10 @@ venv.bak/
 ./src/data/columns.csvdata/
 .DS_Store
 **/__pycache__/
+
+nohup.out
+data
+wandb
+mamba-smiles
+logs
+runs
