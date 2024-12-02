@@ -1,25 +1,5 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# macOS
-.DS_Store
-
-# Some data
-./src/data/BindingDB_sample.tsv
-./src/data/columns.csvdata/
-.DS_Store
-**/__pycache__/
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
