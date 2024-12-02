@@ -22,8 +22,8 @@ title: "The Target That Kinases Your Heart: Investigating the Binding of the Tyr
 email: aygul.bayramova@epfl.ch
 description: >- # this means to ignore newlines until "baseurl:"
   This is a data story presented to you by the laambada team. 
-baseurl: "/ada-2024-project-laambada" # the subpath of your site, e.g. /blog
-url: "https://epfl-ada.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://epfl-ada.github.io/ada-2024-project-laambada" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: 
 github_username:  Aykelia
 
