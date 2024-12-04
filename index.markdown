@@ -6,3 +6,6 @@ layout: home
 ---
 
 That's what happens if I modify index.markdown
+
+Here is a test image:
+![Test image](/assets/test.png)
