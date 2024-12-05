@@ -17,18 +17,20 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+theme:  jekyll-athena
 
-title: "The Target That Kinases Your Heart: Investigating the Binding of the Tyrosine Kinase Protein Family to Their Ligands"
+title: "The Target That Kinases Your Heart"
 email: aygul.bayramova@epfl.ch
 description: >- # this means to ignore newlines until "baseurl:"
-  This is a data story presented to you by the laambada team. 
+  Martrimony agency specialised in Kinase with big target heart 
+  (or Investigating the Binding of the Tyrosine Kinase Protein Family to Their Ligands)
 baseurl: ""
 url: "https://epfl-ada.github.io/ada-2024-project-laambada"
 twitter_username: 
-github_username:  Aykelia
+github_username:  laambada
 
 # Build settings
-theme: minima
+
 plugins:
   - jekyll-feed
 sass:
@@ -55,3 +57,4 @@ kramdown:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+

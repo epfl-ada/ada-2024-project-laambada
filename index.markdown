@@ -3,9 +3,8 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
+title: "&#128420; <!-- Black Heart -->" # title of the link that bring you to the page
 ---
 
-That's what happens if I modify index.markdown
+The text here never appear ? :(
 
-Here is a test image:
-![Test image](/assets/test.png)
