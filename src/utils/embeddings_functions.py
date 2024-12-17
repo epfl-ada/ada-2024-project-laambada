@@ -1,6 +1,8 @@
 import pandas as pd
+import numpy as np
 from rdkit import Chem
 from rdkit.Chem import Descriptors, Fragments
+from mol2vec.features import mol2alt_sentence
 
 def getMolDescriptors(mol, missingVal=None):
     ''' Calculate the full list of descriptors for a molecule, expect those starting with fr_
@@ -42,3 +44,11 @@ def calculate_descriptors(molecule):
     
     
     return all_descriptors
+
+def get_mol2vec_descriptors(mol, model): 
+    """ Get the mol2vec descriptors for a molecule """
+    identifier = mol2alt_sentence(mol, 1)
+    embeddings = [model.wv[token] for token in identifier if token in model.wv]
+    val = np.mean(embeddings, axis=0)
+    return val
+     
