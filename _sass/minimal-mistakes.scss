@@ -35,3 +35,77 @@
 @import "minimal-mistakes/archive";
 @import "minimal-mistakes/sidebar";
 @import "minimal-mistakes/print";
+
+
+/* Side Window Container */
+.side-window {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Initially hidden */
+    width: 300px;
+    height: 100%;
+    background-color: #f4f4f4;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  
+  /* When Open */
+  .side-window.open {
+    right: 0;
+  }
+  
+  /* Close Button */
+  .close-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  /* Open Button */
+  #open-side-window {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
+  /* Content inside the Side Window */
+  .side-window-content {
+    padding: 20px;
+  }
+  
+  .side-window-content h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .side-window-content ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .side-window-content ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .side-window-content ul li a {
+    text-decoration: none;
+    color: #007acc;
+  }
+  
+  .side-window-content ul li a:hover {
+    text-decoration: underline;
+  }
+  

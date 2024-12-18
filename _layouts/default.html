@@ -13,6 +13,26 @@
     {% include_cached skip-links.html %}
     {% include_cached masthead.html %}
 
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  
+    <div id="side-window" class="side-window">
+      <button class="close-button" onclick="toggleSideWindow()">×</button>
+      <div class="side-window-content">
+        <!-- Add your widgets or content here -->
+        <h2>About Us</h2>
+        <p>
+          Description Of the Team here . + description du data set?
+        </p>
+      </div>
+    </div>
+    <button id="open-side-window" onclick="toggleSideWindow()">☰</button>
+    
+
     <div class="initial-content">
       {{ content }}
       {% include after-content.html %}
@@ -32,5 +52,15 @@
     </div>
 
     {% include scripts.html %}
+
+    <script>
+      function toggleSideWindow() {
+        const sideWindow = document.getElementById('side-window');
+        sideWindow.classList.toggle('open');
+      }
+    </script>
+
+  
+
   </body>
 </html>
