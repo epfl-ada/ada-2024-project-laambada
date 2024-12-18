@@ -54,7 +54,7 @@ if generate_Morgan_emb:
 
 # 6. Mol2Vec
 if generate_Mol2Vec_emb:
-    pretrained_model_path = os.path.join(os.getcwd(), 'model_300dim.pkl') 
+    pretrained_model_path = os.path.join(os.getcwd(), 'models/model_300dim.pkl') 
     model = Word2Vec.load(pretrained_model_path)
     print('number of unique identifiers', len(model.wv.key_to_index))
     mol2vec_embeddings = []
