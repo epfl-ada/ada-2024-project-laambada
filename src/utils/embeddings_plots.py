@@ -4,6 +4,7 @@ import seaborn as sns
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import plotly.express as px
+import pandas as pd
 
 def create_target_plot(df_merged, reduction ) : 
     if reduction == 'PCA':
@@ -121,6 +122,32 @@ def reduce_family(value) :
         return value
     else :
         return result
-
-
     
+def create_pca_feature_importance_plot(data, pca):
+
+    feature_importance = pd.DataFrame(
+        pca.components_[:2].T,
+        columns=['PC1', 'PC2'],
+        index=data.columns
+    )
+
+    # Select top contributing features based on absolute values
+    top_features = feature_importance.abs().sum(axis=1).sort_values(ascending=False).head(10).index
+    top_feature_importance = feature_importance.loc[top_features]
+
+    # Create heatmap 
+    fig = go.Figure(data=go.Heatmap(
+        z=top_feature_importance.values,
+        x=top_feature_importance.columns,
+        y=top_feature_importance.index,
+        colorscale='RdBu',
+        zmid=0
+    ))
+
+    fig.update_layout(
+        title='PCA Feature Importance Heatmap (Top features)',
+        xaxis_title='Principal Component',
+        yaxis_title='Feature'
+    )
+
+    return fig    
