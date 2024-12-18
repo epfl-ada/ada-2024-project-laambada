@@ -33,11 +33,11 @@ def create_properties_plot(df_merged, reduction ) :
     elif reduction == 'TSNE':
         x_col = 'TSNE1'
         y_col = 'TSNE2'
-    
+    df_pKi = df_merged.dropna(subset=['pKi'])
     fig.add_trace(
         go.Scatter(
-            x=df_merged[x_col],
-            y=df_merged[y_col],
+            x=df_pKi[x_col],
+            y=df_pKi[y_col],
             mode="markers",
             marker=marker
         )
@@ -50,7 +50,9 @@ def create_properties_plot(df_merged, reduction ) :
             label='pKi',
             method='update',
             args=[{
-                'marker.color': [df_merged['pKi']],
+                'x': [df_pKi[x_col]],
+                'y': [df_pKi[y_col]],
+                'marker.color': [df_pKi['pKi']],
                 'marker.colorbar.title': ['pKi Value']
             }]
         ),
@@ -58,7 +60,9 @@ def create_properties_plot(df_merged, reduction ) :
             label='pIC50',
             method='update',
             args=[{
-                'marker.color': [df_merged['pIC50']],
+                'x': [df_merged.dropna(subset=['pIC50'])[x_col]],
+                'y': [df_merged.dropna(subset=['pIC50'])[y_col]],
+                'marker.color': [df_merged.dropna(subset=['pIC50'])['pIC50']],
                 'marker.colorbar.title': ['pIC50 Value']
             }]
         )
