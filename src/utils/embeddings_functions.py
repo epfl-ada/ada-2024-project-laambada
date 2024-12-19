@@ -28,10 +28,6 @@ def getMolDescriptors(mol, missingVal=None):
 def get_RDKIT_molecules(df):
     smiles = df['Ligand SMILES'].unique()
     smiles_to_molecules = pd.Series([Chem.MolFromSmiles(smiles) for smiles in smiles])
-    #mask = smiles_to_molecules.isna()
-    #smiles = smiles[mask]
-    #smiles_to_molecules.dropna(inplace=True)
- 
     return smiles, smiles_to_molecules
 
 

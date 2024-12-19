@@ -62,6 +62,3 @@ if generate_Mol2Vec_emb:
         mol2vec_embeddings.append(get_mol2vec_descriptors(mol, model))
     #mol2vec_descriptors_df = pd.DataFrame(mol2vec_embeddings)
     save_embeddings(smiles, mol2vec_embeddings, name=f'Mol2Vec_{start_batch}_{end_batch}', folder=data_folder)
-
-
-
