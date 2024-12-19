@@ -105,6 +105,7 @@ def create_pca_feature_importance_plot(data, pca, fig_output_path, n_embeddings=
 
 def vizualize_reduction(pca, umap, df, fig_output_path):
     
+
     df_merged_pca = df.merge(pca, on='Ligand SMILES')
     df_merged_umap = df.merge(umap, on='Ligand SMILES')
     
