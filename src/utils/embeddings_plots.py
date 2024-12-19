@@ -35,6 +35,7 @@ def create_properties_plot(df_merged, reduction ) :
         x_col = 'UMAP1'
         y_col = 'UMAP2'
     df_pKi = df_merged.dropna(subset=['pKi'])
+    df_pIC = df_merged.dropna(subset=['pIC50'])
     fig.add_trace(
         go.Scatter(
             x=df_pKi[x_col],
@@ -61,9 +62,9 @@ def create_properties_plot(df_merged, reduction ) :
             label='pIC50',
             method='update',
             args=[{
-                'x': [df_merged.dropna(subset=['pIC50'])[x_col]],
-                'y': [df_merged.dropna(subset=['pIC50'])[y_col]],
-                'marker.color': [df_merged.dropna(subset=['pIC50'])['pIC50']],
+                'x': [df_pIC[x_col]],
+                'y': [df_pIC[y_col]],
+                'marker.color': [df_pIC['pIC50']],
                 'marker.colorbar.title': ['pIC50 Value']
             }]
         )
