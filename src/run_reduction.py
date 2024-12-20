@@ -1,3 +1,12 @@
+'''
+File name: run_reduction.py
+Author: Alexandre Sallinen, Maud Dupont-Roc, Laura Gambaretto
+Date created: 20 November 2024
+Date last modified: 18 December 2024
+Python Version: 3.7
+'''
+
+
 from sklearn.decomposition import PCA
 from sklearn.discriminant_analysis import StandardScaler
 from sklearn.manifold import TSNE
@@ -10,7 +19,19 @@ from src.scripts.load_and_save import load_data
 from src.utils.embeddings_plots import create_properties_plot, create_target_plot
 
 def run_pca_reduction(scaled_descriptors, save_path, smiles_data, sensitivity=0.95, ):
+    '''
+    Run PCA dimensionality reduction on the scaled descriptors.
 
+    Parameters:
+    - scaled_descriptors (np.ndarray): Scaled descriptors to reduce
+    - save_path (str): Path to save the PCA results as a csv.zip file
+    - sensitivity (float): Explained variance ratio to keep
+    - smiles_data (pd.Series): SMILES strings corresponding to the data
+
+    Returns:
+    - pd.DataFrame: DataFrame containing PCA results
+    - PCA: PCA object
+    '''
     # Apply PCA
     pca = PCA(n_components=sensitivity)
     pca_result = pca.fit_transform(scaled_descriptors)
@@ -52,6 +73,19 @@ def run_umap_reduction(data, smiles_data, output_path, random_state=42):
     return umap_df
 
 def create_pca_feature_importance_plot(data, pca, fig_output_path, n_embeddings=None, n_components=None):
+    '''
+    Create a heatmap to show the contribution of the most important features to the first principal components.
+
+    Parameters:
+    - data (pd.DataFrame): Original data
+    - pca (PCA): PCA object
+    - fig_output_path (str): Path to save the Plotly figure as an HTML file
+    - n_embeddings (int): Number of top features to show for each principal component
+    - n_components (int): Number of principal components to show
+
+    Returns:
+    - None. Displays the generated Plotly figure.
+    '''
     # Get feature names from original data
     feature_names = data.columns.tolist()
 
@@ -104,7 +138,11 @@ def create_pca_feature_importance_plot(data, pca, fig_output_path, n_embeddings=
     return fig
 
 def vizualize_reduction(pca, umap, df, output_dir, name):
-    
+    '''
+    Create and save visualizations for the PCA and UMAP dimensionality reduction results.
+    We create scatter plots colored by the target protein or by the pKi/pIC50 metrics.
+    We also create histograms for the properties contributing to the first principal components.
+    '''
 
     df_merged_pca = df.merge(pca, on='Ligand SMILES', how='left')
     df_merged_umap = df.merge(umap, on='Ligand SMILES', how='left')
@@ -152,7 +190,21 @@ def run_analysis(main_df, input_data_path, output_dir='src/data/embeddings_dim_r
                  n_components=2,
                  do_umap=True):
     """
-    Run the complete dimensionality reduction pipeline.
+    Run the complete dimensionality reduction pipeline. 
+    This includes PCA and UMAP reduction, and the creation of visualizations.
+
+    Parameters:
+    - main_df (pd.DataFrame): DataFrame containing the SMILES strings and the metrics.
+    - input_data_path (str): Path to the input data file.
+    - output_dir (str): Directory to save the output files.
+    - pca_sensitivity (float): Explained variance ratio to keep for PCA.
+    - umap_random_state (int): Random seed for UMAP.
+    - n_embeddings (int): Number of top features to show for each principal component.
+    - n_components (int): Number of principal components to show.
+    - do_umap (bool): Whether to run UMAP reduction.
+
+    Returns:
+    - None. Saves the output files and displays the visualizations.
     """
     # Create output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
