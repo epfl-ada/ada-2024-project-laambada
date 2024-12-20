@@ -96,7 +96,7 @@ Now we consider some continous features and plot the ditrib :
 
 
 <div class="image-container2">
-  <button class="image-button"> chemchar </button>
+  <button class="image-button"> Chemical Features Distribution </button>
     <div class="image-box">
       <figure>
         <iframe src="/assets/plots/chemchar2.html" width="100%" height="400px"></iframe>
@@ -181,6 +181,7 @@ Let's look at our Big Matchmaker.
       </figure>
   </div>
 </div>
+
 
 # Special space for special guests
 
