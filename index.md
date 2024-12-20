@@ -39,10 +39,10 @@ kinases are the ones that contribute the most to human operations (thanks for th
   <button class="image-button"> Whats binding means for you</button>
     <div class="image-box">
       <figure>
-        <iframe src="/assets/plots/nan_fraction.html" width="100%" height="400px"></iframe>
-        <figcaption> Metric Values counts </figcaption>
+        <img src="/assets/plots/nan_fraction.png" alt="Plot 1" />
+        <figcaption>Binding metric and reaction metric value count </figcaption>
       </figure>
-  </div>
+    </div>
 </div>
 
 Among all of you we can notice that binding is essentially according to IC50 but we must not ignore the other factors!
@@ -55,6 +55,8 @@ Among all of you we can notice that binding is essentially according to IC50 but
 
 >**IC50 vs KI: bigbro forever** \
 Hopefully, both are statistically linked so we can still orient our research by using both of them depending again on you! 
+
+<!--HERE TODO  : reshape the image in the container -->
 
 <div class="image-container2">
   <button class="image-button"> KI vs IC50 Correlation </button>
@@ -85,7 +87,7 @@ Describe what is a functional group here.
   <button class="image-button"> Functional Group Categories </button>
     <div class="image-box">
       <figure>
-        <iframe src="/assets/plots/functional_groups.html" width="100%" height="400px"></iframe>
+        <img src="/assets/plots/functional_groups.png" alt="Plot 1" />
         <figcaption> Functional Group Categories </figcaption>
       </figure>
   </div>
@@ -94,16 +96,38 @@ Describe what is a functional group here.
 ## Continous features 
 Now we consider some continous features and plot the ditrib : 
 
-
+<!--HERE TODO  reshape the image in the container-->
 <div class="image-container2">
   <button class="image-button"> Chemical Features Distribution </button>
     <div class="image-box">
       <figure>
-        <iframe src="/assets/plots/chemchar2.html" width="100%" height="400px"></iframe>
-        <figcaption> chem char </figcaption>
+        <img src="/assets/plots/chemchar2.png" alt="chemchar" />
+        <figcaption> chemical characterization </figcaption>
       </figure>
   </div>
 </div>
+
+<div class="image-container2">
+  <button class="image-button"> What our members say </button>
+    <div class="image-box">
+      <figure>
+        <iframe src="/assets/plots/top_matches.html" width="100%" height="400px"></iframe>
+        <figcaption> Top Candidate Ligands characterisation </figcaption>
+      </figure>
+  </div>
+</div>
+
+More complicated that it seems : Reg linear bewteen metric and char 
+<div class="image-container2">
+  <button class="image-button"> Mutual Info Metric vs Chem Characterization </button>
+    <div class="image-box">
+      <figure>
+        <img src="/assets/plots/mutual_information.png" alt="chemchar" />
+        <figcaption> Mutual Information bewteen metrcs and chemical characterization </figcaption>
+      </figure>
+  </div>
+</div>
+
 
 # A match made in Haven  
 
@@ -117,16 +141,15 @@ Oh, this summary doesn't look appealing. We obtained it by keeping the first two
 
 <div class="plot-container">
   <!-- First Plot -->
-  <iframe src="/assets/plots/umap_pIC_RDKIT.html" class="plot active" frameborder="0"></iframe>
+  <img src="/assets/plots/umap_pIC_RDKIT_descriptors.png" alt="UMAP pIC RDKIT" class="plot active">
   <!-- Second Plot -->
-  <iframe src="/assets/plots/umap_pKi_RDKIT.html" class="plot" frameborder="0"></iframe>
+  <img src="/assets/plots/umap_pKi_RDKIT_descriptors.png" alt="UMAP pKI RDKIT" class="plot active">
 </div>
 
 <div class="switch-buttons">
   <button onclick="switchPlot(0)">IC50</button>
   <button onclick="switchPlot(1)">KI</button>
 </div>
-
 
 <div class="image-container2">
   <button class="image-button"> PCA componants </button>
@@ -138,6 +161,14 @@ Oh, this summary doesn't look appealing. We obtained it by keeping the first two
   </div>
 </div>
 
+Specific to the target ? Familly of protein on this space 
+
+<!--HERE TODO  does not work -->
+<div style="text-align: center;">
+  <iframe src="/assets/plots/umap_target_RDKIT_descriptors.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
+  <p><em>RDKIT embedding space color per targets.</em></p>
+</div>
+
 Looks better! Now it is clear that our clients definitely have their preferences when it comes to binding partners. Maybe we can go even further and uncover some deeply rooted preferences that even kinases do not know about? Time to dive into machine learning!
 
 ## Mol2Vec embedding space
@@ -146,9 +177,9 @@ Inspired by our insightful partnership with RDKit, we contacted our next contrac
 
 <div class="plot-container">
   <!-- First Plot -->
-  <iframe src="/assets/plots/umap_pIC_Mol2Vec.html" class="plot active" frameborder="0"></iframe>
+  <img src="/assets/plots/umap_pIC_Mol2Vec.png" alt="UMAP pIC Mol2Vec" class="plot active">
   <!-- Second Plot -->
-  <iframe src="/assets/plots/umap_pKi_Mol2Vec.html" class="plot" frameborder="0"></iframe>
+  <img src="/assets/plots/umap_pKi_Mol2Vec.png" alt="UMAP pKI Mol2Vec" class="plot active">
 </div>
 
 <div class="switch-buttons">
@@ -167,18 +198,29 @@ Inspired by our insightful partnership with RDKit, we contacted our next contrac
 </div>
 
 Specific to the target ? Familly of protein on this space 
-<div class="image-container2">
-  <iframe src="/assets/plots/umap_target_full.html" width="100%" height="400px"></iframe>
-  <figcaption> Umap Full: Familly coloration </figcaption>
+
+<!--HERE TODO  WTF  does not work -->
+<div style="text-align: center;">
+  <iframe src="/assets/plots/umap_target_Mol2Vec.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
+  <p><em>Mol2Vec embedding space color per targets</em></p>
 </div>
 
 This looks ... convoluted. We contacted Mol2Vec for further explanation but they declined responsibility and accused us of providing ligands that were too structurally similar to be separated. Well, this partnership will not last any longer!
 
 
 ## Morgan Fingerprint embedding space 
+<div class="plot-container">
+  <!-- First Plot -->
+  <img src="/assets/plots/umap_pIC_Morgan_Fingerprint.png" alt="UMAP pIC Morgan" class="plot active">
+  <!-- Second Plot -->
+  <img src="/assets/plots/umap_pKi_Morgan_Fingerprint.png" alt="UMAP pKi Morgan" class="plot active">
+</div>
 
+<div class="switch-buttons">
+  <button onclick="switchPlot(0)">IC50</button>
+  <button onclick="switchPlot(1)">KI</button>
+</div>
 
-<iframe src="/assets/plots/reduction_plots_Morgan_Fingerprint.html" width="100%" height="400px"></iframe> 
 
 <div class="image-container2">
   <button class="image-button"> PCA componants </button>
@@ -191,10 +233,13 @@ This looks ... convoluted. We contacted Mol2Vec for further explanation but they
 </div>
 
 Specific to the target ? Familly of protein on this space 
-<div class="image-container2">
-  <iframe src="/assets/plots/umap_target_full.html" width="100%" height="400px"></iframe>
-  <figcaption> Umap Full: Familly coloration </figcaption>
+
+<!--HERE TODO  does not work -->
+<div style="text-align: center;">
+  <iframe src="/assets/plots/umap_target_Morgan_Fingerprint.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
+  <p><em>Morgan Fingerprint embedding space color per targets</em></p>
 </div>
+
 
 ## Our very own embedding
 
@@ -204,9 +249,9 @@ Let's look at our Big Matchmaker.
 
 <div class="plot-container">
   <!-- First Plot -->
-  <iframe src="/assets/plots/umap_pIC_full.html" class="plot active" frameborder="0"></iframe>
+  <img src="/assets/plots/umap_pIC_full.png" alt="UMAP pIC all" class="plot active">
   <!-- Second Plot -->
-  <iframe src="/assets/plots/umap_pKi_full.html" class="plot" frameborder="0"></iframe>
+  <img  src="/assets/plots/umap_pKi_full.png" alt="UMAP pIC all" class="plot active">
 </div>
 
 <div class="switch-buttons">
@@ -225,10 +270,13 @@ Let's look at our Big Matchmaker.
 </div>
 
 Specific to the target ? Familly of protein on this space 
-<div class="image-container2">
-  <iframe src="/assets/plots/umap_target_full.html" width="100%" height="400px"></iframe>
-  <figcaption> Umap Full: Familly coloration </figcaption>
+
+<!--HERE TODO  does not work -->
+<div style="text-align: center;">
+  <iframe src="/assets/plots/umap_target_full.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
+  <p><em>Full embedding space color per targets</em></p>
 </div>
+
 
 # Special space for special guests
 
