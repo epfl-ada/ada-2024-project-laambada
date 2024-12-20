@@ -55,7 +55,7 @@ For each embedding space, we apply PCA, followed by UMAP, to study whether and h
 ## Group Organization
 
 - Aygul: family selection; website redaction
-- Maud:
-- Laura: embedding spaces
+- Maud: chemical characterization; data visualization 
+- Laura: embedding spaces; data visualization 
 - Barbara: Metric investigation; website redaction
-- Alexandre: 
+- Alexandre: ML Inference; embedding generation
