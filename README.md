@@ -56,6 +56,6 @@ For each embedding space, we apply PCA, followed by UMAP, to study whether and h
 
 - Aygul: family selection; website redaction
 - Maud:
-- Laura:
+- Laura: embedding spaces
 - Barbara: Metric investigation; website redaction
 - Alexandre: 
