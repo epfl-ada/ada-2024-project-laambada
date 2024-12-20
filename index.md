@@ -247,12 +247,18 @@ Here is the latest hit in matchmaking – predicting binding affinities using ma
 
 ## Multilayer Perceptron
 
-In order to predict binding affinities, we trained a multilayer perceptron that took the concatenated embeddings as input.
+In order to predict binding affinities, we trained a multilayer perceptron that took the concatenated embeddings as input. Sadly many of our clients were left disappointed as the model was not able to predict the binding affinities with a satisfying accuracy.
 
 ### Graph Neural Network
 
-Inspired by what is considered to be state of the art in terms of ML models in drug discovery, we trained our own graph neural network (GNN) to predict affinities. Each ligand was represented as a graph containing the information about its structure. We added some relevant RDKit Descriptors to the nodes and some bond information to the edges of the graphs. Then we trained a GNN that took in input a graph and outputed.
+Inspired by what is considered to be state of the art in terms of ML models in drug discovery, we trained our own graph neural network (GNN) to predict affinities. Each ligand was represented as a graph containing the information about its structure. We added some relevant RDKit Descriptors to the nodes and some bond information to the edges of the graphs. Then we trained a GNN that took in input a graph and outputed the pIC50 of the ligand. The model was still not able to predict the binding affinities with a satisfying accuracy. Actually both models had a similar performance with a R² that most of our clients would consider as a deal breaker.
 
+<div >
+  <!-- First Plot -->
+  <img src="assets/plots/r_sq.png"  >
+</div>
 
-As it turns out, being a matchmaking agency is no joke. We found our disappointed client listening to _You Should Be Stronger Than Me_ by Amy Winehouse on repeat.
+### Closing Words
+
+As it turns out, being a matchmaking agency is no joke. We found our disappointed client listening to _You Should Be Stronger Than Me_ by Amy Winehouse on repeat. As we speak BindingDB is experiencing a severe heartbreak ti is not available anymore, we trust that with our future services and newfound knowledge they will come back strong and ready to find their perfect match !
 
