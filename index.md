@@ -58,16 +58,31 @@ Hopefully, both are statistically linked so we can still orient our research by 
 
 <!--HERE TODO  : reshape the image in the container -->
 
-<div class="image-container2">
-  <button class="image-button"> KI vs IC50 Correlation </button>
-    <div class="image-box">
-      <figure>
-        <iframe src="assets/plots/pKi_pIC50.html" width="100%" height="400px"></iframe>
-        <figcaption> KI vs IC50 Correlation </figcaption>
+<button onclick="togglePlot('kiIc50Plot')" style="padding: 10px 20px; margin: 20px 0; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+  Ki vs IC50 Correlation
+</button>
+
+<div id="kiIc50Plot" style="display: none;">
+  <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 40px 0;">
+    <div style="width: 1200px; max-width: 400%;">
+      <figure style="margin: 0; padding: 0;">
+        <iframe src="assets/plots/pKi_pIC50.html" width="300%" height="600px" frameborder="0" style="border: 1px solid #eee;"></iframe>
+        <figcaption style="text-align: center; margin-top: 15px; font-style: italic;"> KI vs IC50 Correlation </figcaption>
       </figure>
+    </div>
   </div>
 </div>
 
+<script>
+function togglePlot(id) {
+  const plot = document.getElementById(id);
+  if (plot.style.display === "none") {
+    plot.style.display = "block";
+  } else {
+    plot.style.display = "none";
+  }
+}
+</script>
 
 > **Temperature and pH rising for your match** \
 > Even if the temperature or the pH cannot by themself represent a binding factor, we know that they can influence a lot your match. So let the temperature rise, and trust your pH! 
