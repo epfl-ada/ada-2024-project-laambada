@@ -9,6 +9,8 @@ header:
 related: false
 ---
 
+# Kinase Looking For Love ?
+
 *Elite matchmaking in Switzerland and beyond for select single targets and ligands.*
 *For all the **Kinases**, if you feel ready for a new, lasting binding or fast thunderbolt, this tailor-made approach is your best choice.*
 *Our team hand-picks your matches and accompanies you throughout the entire process of finding your successful match, from the characterization of your preference to the choice of your soulmate.*
@@ -72,8 +74,12 @@ Hopefully, both are statistically linked so we can still orient our research by 
 > So yes, you don't seem to accord a lot of attention to the others, so let's neglect them.
 
 # A Good Candidate 
+The success in our matchmaking business depends on how accurately we gather information on our candidates. We want our clients to be able to decide whether it is a hit or a miss in a blink of eye. That is why constructing meaningful profiles is so important. Let's start with the obvious questions – what chemical properties do our clients want in their partners? 
 
-Rdkit checical feature extraction !
+Say that we took them from Rdkit descriptors 
+
+## Categorical features : Fonctional Group
+Describe what is a functional group here.
 
 <div class="image-container2">
   <button class="image-button"> Functional Group Categories </button>
@@ -85,6 +91,10 @@ Rdkit checical feature extraction !
   </div>
 </div>
 
+## Continous features 
+Now we consider some continous features and plot the ditrib : 
+
+
 <div class="image-container2">
   <button class="image-button"> chemchar </button>
     <div class="image-box">
@@ -95,9 +105,7 @@ Rdkit checical feature extraction !
   </div>
 </div>
 
-# A match made in Haven 
-
-The success in our matchmaking business depends on how accurately we gather information on our candidates. We want our clients to be able to decide whether it is a hit or a miss in a blink of eye. That is why constructing meaningful profiles is so important. Let's start with the obvious questions – what chemical properties do our clients want in their partners?  
+# A match made in Haven  
 
 ## Embedding Space From Rdkit
 
