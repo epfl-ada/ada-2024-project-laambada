@@ -10,6 +10,7 @@ import numpy as np
 def create_target_plot(df_merged, reduction ) : 
     if reduction == 'PCA':
         fig = px.scatter(df_merged, x='PC1', y='PC2', color='Target Name')
+
     elif reduction == 'UMAP':
         fig = px.scatter(df_merged, x='UMAP1', y='UMAP2', color='Target Name')
 
@@ -18,7 +19,72 @@ def create_target_plot(df_merged, reduction ) :
 )
     return fig
 
-def create_properties_plot(df_merged, reduction ) : 
+def create_properties_plot(df_merged, reduction ):
+    df_pKi = df_merged.dropna(subset=['pKi'])
+    df_pIC = df_merged.dropna(subset=['pIC50'])
+
+    # 1. for pKi
+    fig_pKi = go.Figure()
+
+    # Add initial trace with Ki as the color axis
+    marker = marker=dict(
+                color=df_pKi['pKi'],
+                colorbar=dict(title='pKI Value'),
+                colorscale='PuRd'#Viridis'
+            )
+    if reduction == 'PCA':
+        x_col = 'PC1'
+        y_col = 'PC2'
+    elif reduction == 'UMAP':
+        x_col = 'UMAP1'
+        y_col = 'UMAP2'
+    
+    fig_pKi.add_trace(
+        go.Scatter(
+            x=df_pKi[x_col],
+            y=df_pKi[y_col],
+            mode="markers",
+            marker=marker
+        )
+    )
+
+    fig_pKi.update_layout(
+        xaxis_title=x_col,
+        yaxis_title=y_col
+    )
+
+    # 2. for pIC50
+    fig_pIC = go.Figure()
+    marker = marker=dict(
+                color=df_pIC['pIC50'],
+                colorbar=dict(title='pIC50 Value'),
+                colorscale='PuRd'#Viridis' PuRd
+            )
+    if reduction == 'PCA':
+        x_col = 'PC1'
+        y_col = 'PC2'
+    elif reduction == 'UMAP':
+        x_col = 'UMAP1'
+        y_col = 'UMAP2'
+    
+    fig_pIC.add_trace(
+        go.Scatter(
+            x=df_pIC[x_col],
+            y=df_pIC[y_col],
+            mode="markers",
+            marker=marker
+        )
+    )
+
+    fig_pIC.update_layout(
+        xaxis_title=x_col,
+        yaxis_title=y_col
+    )
+
+    return fig_pKi, fig_pIC
+
+# TODO remove
+def create_properties_plotold(df_merged, reduction ) : 
     
     fig = go.Figure()
 
@@ -26,7 +92,7 @@ def create_properties_plot(df_merged, reduction ) :
     marker = marker=dict(
                 color=df_merged['pKi'],
                 colorbar=dict(title='pKi Value'),
-                colorscale='Viridis'
+                colorscale='PuRd'#Viridis'
             )
     if reduction == 'PCA':
         x_col = 'PC1'

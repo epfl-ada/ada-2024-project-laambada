@@ -1,4 +1,6 @@
 import pandas as pd
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 def explore_column(df, i, return_unique = False):
     columns = df.columns
@@ -53,3 +55,66 @@ def clean_metrics(column) :
     clean_numerical_column = pd.to_numeric(clean_column, errors= 'coerce')
 
     return clean_numerical_column 
+
+def plot_chemical_property_distributions(df, metrics, chemical_properties, properties_colors, filepath, plot_metrics, df_embeddings=None):
+    """
+    Plot the distribution of chemical properties and additional metrics for ligands.
+
+    Parameters:
+    - df (pd.DataFrame): Main DataFrame containing ligand data.
+    - df_embeddings (pd.DataFrame): DataFrame containing RDKit-derived chemical properties.
+    - metrics (list): List of metric column names to plot (e.g., pKi, pIC50).
+    - chemical_properties (list): List of chemical properties or features to visualize.
+    - properties_colors (list): List of colors for the histogram plots of chemical properties.
+    - title (str): Title of the overall plot.
+
+    Returns:
+    - None. Displays the generated Plotly figure.
+    """
+    # Calculate number of rows and columns for subplots
+    n_metrics = len(metrics)
+    n_properties = len(chemical_properties)
+    
+    # Create the subplot grid
+    if plot_metrics:
+        fig = make_subplots(rows=n_metrics, cols=n_properties+1)
+
+    else:
+        fig = make_subplots(rows=n_metrics, cols=n_properties)
+
+    # Plot chemical properties histograms
+    for i, metric in enumerate(metrics):
+        # Merge main dataframe with embeddings
+        if df_embeddings is None:
+            df_to_plot = df.dropna(subset=metric)
+        else:
+            df_to_plot = df.merge(df_embeddings, on='Ligand SMILES', how='left').dropna(subset=metric)
+
+        for j, property in enumerate(chemical_properties):
+            color = properties_colors[j % len(properties_colors)]  # Cycle through colors
+            x = df_to_plot[property]
+            fig.add_trace(
+                go.Histogram(x=x, name=property, showlegend=False, marker_color=color),
+                row=i+1, col=j+1
+            )
+            fig.update_xaxes(title_text=property, row=i+1, col=j+1)
+
+        if plot_metrics:
+            # Plot metric histogram in the last column
+            x = df_to_plot[metric]
+            fig.add_trace(
+                go.Histogram(x=x, name=metric, showlegend=False, marker_color='wheat'),
+                row=i+1, col=n_properties+1
+            )
+            fig.update_xaxes(title_text=metric, row=i+1, col=n_properties+1)
+
+    # Update layout
+    fig.update_layout(
+        height=300 * n_metrics,  # Adjust height dynamically
+        width=1200
+    )
+
+    # Show the figure
+    fig.show()
+
+    fig.write_html(filepath)
