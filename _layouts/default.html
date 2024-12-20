@@ -65,12 +65,12 @@
     </div>
     <button id="open-side-window" onclick="toggleSideWindow()">☰</button>
     
-    <!-- For side image : familly plots -->
+    <!-- For side image : familly plots 
     <div class="image-container">
       <iframe src="/assets/plots/umap_target_full.html" width="100%" height="400px"></iframe>
       <figcaption> Umap Full: Familly coloration </figcaption>
     </div>
-  
+     -->
 
     <div class="initial-content">
       {{ content }}
@@ -92,12 +92,25 @@
 
     {% include scripts.html %}
 
+    <!-- Script for the side window ABOUT --> 
     <script>
       function toggleSideWindow() {
         const sideWindow = document.getElementById('side-window');
         sideWindow.classList.toggle('open');
       }
     </script>
+
+    <!-- Script for the switch plot boutton -->
+    <script>
+      function switchPlot(index) {
+        const plots = document.querySelectorAll('.plot');
+        plots.forEach((plot, i) => {
+        plot.classList.toggle('active', i === index);
+        });
+      }
+    </script>
+
+
 
   <script src="{{ "/assets/js/scroll-behavior.js" | relative_url }}"></script>
 

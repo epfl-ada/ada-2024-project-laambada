@@ -115,8 +115,18 @@ Well, let's go all-in and look for every available piece of information regardin
 
 Oh, this summary doesn't look appealing. We obtained it by keeping the first two components of the PCA of chemical characterization. Maybe that is still too much extra information? Let's go one step further and apply t-SNE on our PCA-reduced profiles.
 
+<div class="plot-container">
+  <!-- First Plot -->
+  <iframe src="/assets/plots/umap_pIC_RDKIT.html" class="plot active" frameborder="0"></iframe>
+  <!-- Second Plot -->
+  <iframe src="/assets/plots/umap_pKi_RDKIT.html" class="plot" frameborder="0"></iframe>
+</div>
 
-<iframe src="/assets/plots/reduction_plots_RDKIT_descriptors.html" width="100%" height="400px"></iframe>
+<div class="switch-buttons">
+  <button onclick="switchPlot(0)">IC50</button>
+  <button onclick="switchPlot(1)">KI</button>
+</div>
+
 
 <div class="image-container2">
   <button class="image-button"> PCA componants </button>
@@ -134,7 +144,17 @@ Looks better! Now it is clear that our clients definitely have their preferences
 
 Inspired by our insightful partnership with RDKit, we contacted our next contractor – Mol2Vec. This agency does the dirty work of finding a meaningful representation of chemical properties and similarities between molecules for you. It considers the ligands for what they, in essence, are – atoms connected by bonds – and constructs vectors that capture everything you need to know. Straight to the point, so that our kinases do not lose their precious time on ligands that weren't meant for them from the beginning. Once again, we care about the comfort of our customers, that's way we propose a dimensionally reduced summary of our findings.
 
-<iframe src="/assets/plots/reduction_plots_Mol2Vec.html" width="100%" height="400px"></iframe>
+<div class="plot-container">
+  <!-- First Plot -->
+  <iframe src="/assets/plots/umap_pIC_Mol2Vec.html" class="plot active" frameborder="0"></iframe>
+  <!-- Second Plot -->
+  <iframe src="/assets/plots/umap_pKi_Mol2Vec.html" class="plot" frameborder="0"></iframe>
+</div>
+
+<div class="switch-buttons">
+  <button onclick="switchPlot(0)">IC50</button>
+  <button onclick="switchPlot(1)">KI</button>
+</div>
 
 <div class="image-container2">
   <button class="image-button"> PCA componants </button>
@@ -144,6 +164,12 @@ Inspired by our insightful partnership with RDKit, we contacted our next contrac
         <figcaption> PCA componants </figcaption>
       </figure>
   </div>
+</div>
+
+Specific to the target ? Familly of protein on this space 
+<div class="image-container2">
+  <iframe src="/assets/plots/umap_target_full.html" width="100%" height="400px"></iframe>
+  <figcaption> Umap Full: Familly coloration </figcaption>
 </div>
 
 This looks ... convoluted. We contacted Mol2Vec for further explanation but they declined responsibility and accused us of providing ligands that were too structurally similar to be separated. Well, this partnership will not last any longer!
@@ -164,13 +190,29 @@ This looks ... convoluted. We contacted Mol2Vec for further explanation but they
   </div>
 </div>
 
+Specific to the target ? Familly of protein on this space 
+<div class="image-container2">
+  <iframe src="/assets/plots/umap_target_full.html" width="100%" height="400px"></iframe>
+  <figcaption> Umap Full: Familly coloration </figcaption>
+</div>
+
 ## Our very own embedding
 
 Luckily, our agency has an R&D department of its own. Who needs rude contractors, anyway? After long and tedious development, we present our proprietary machine-learning method for ad hoc embeddings, because our clients deserve the best. We first trained a transformer that predicted a ligand's SMILES provided the beginning of its SMILES (a _Not-so-large SMILES model_ if you wish). The trick is that the model, in fact, generated a vector of probabilities of the possible SMILES characters – that is our embedding! Ingenious, isn't it?
 
 Let's look at our Big Matchmaker.
 
-<iframe src="/assets/plots/reduction_plots_full.html" width="100%" height="400px"></iframe> 
+<div class="plot-container">
+  <!-- First Plot -->
+  <iframe src="/assets/plots/umap_pIC_full.html" class="plot active" frameborder="0"></iframe>
+  <!-- Second Plot -->
+  <iframe src="/assets/plots/umap_pKi_full.html" class="plot" frameborder="0"></iframe>
+</div>
+
+<div class="switch-buttons">
+  <button onclick="switchPlot(0)">IC50</button>
+  <button onclick="switchPlot(1)">KI</button>
+</div>
 
 <div class="image-container2">
   <button class="image-button"> PCA componants </button>
@@ -182,6 +224,11 @@ Let's look at our Big Matchmaker.
   </div>
 </div>
 
+Specific to the target ? Familly of protein on this space 
+<div class="image-container2">
+  <iframe src="/assets/plots/umap_target_full.html" width="100%" height="400px"></iframe>
+  <figcaption> Umap Full: Familly coloration </figcaption>
+</div>
 
 # Special space for special guests
 

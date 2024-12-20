@@ -293,3 +293,7 @@ defaults:
       comments: # true
       share: true
       related: true
+
+# Javascrip
+javascript:
+  - assets/js/plot-switcher.js
