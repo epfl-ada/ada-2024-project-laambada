@@ -44,7 +44,7 @@
     right: -300px; /* Initially hidden */
     width: 300px;
     height: 100%;
-    background-color: #f4f4f4;
+    background-color: #FFF0F5;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
     transition: right 0.3s ease-in-out;
@@ -72,8 +72,8 @@
     position: fixed;
     top: 10px;
     right: 10px;
-    background: #333;
-    color: white;
+    background: #C71585;
+    color: #FFF0F5;
     border: none;
     padding: 10px 15px;
     font-size: 1.2rem;
@@ -84,6 +84,7 @@
   /* Content inside the Side Window */
   .side-window-content {
     padding: 20px;
+
   }
   
   .side-window-content h2 {
@@ -102,10 +103,47 @@
   
   .side-window-content ul li a {
     text-decoration: none;
-    color: #007acc;
+    color: #DA70D6;
   }
   
   .side-window-content ul li a:hover {
     text-decoration: underline;
   }
   
+/* Sliding Window at the Top */
+.top-sliding-window {
+  position: Absolute; 
+  border-radius: 10px;
+  top: 9%; 
+  width: 20%; 
+  height: 600px; 
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 4); 
+  z-index: 1000; 
+  overflow: auto;
+  transition: transform 0.4s ease; 
+}
+
+/* Slide the window out when scrolled */
+.top-sliding-window.scrolled {
+  transform: translateY(-200px); 
+}
+
+/* Content inside the sliding window */
+.top-window-content {
+  padding: 5px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.8rem;
+  color: #333;
+  text-align: left;
+  line-height: 1.5; 
+}
+
+.top-window-content h2{
+  padding: 1px;
+  font-size: 1.2 rem;
+  color: #333;
+  text-align: Center;
+  line-height: 1.5; 
+  margin-bottom: 15px;
+}

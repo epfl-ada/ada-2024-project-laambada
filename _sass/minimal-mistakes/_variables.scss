@@ -64,6 +64,15 @@ $darker-gray: mix(#000, $gray, 60%) !default;
 $light-gray: mix(#fff, $gray, 50%) !default;
 $lighter-gray: mix(#fff, $gray, 90%) !default;
 
+// Button colors
+$btn-primary-bg: #C71585;      
+$btn-primary-hover-bg: #FF00FF; 
+$btn-primary-border: #BA55D3;  
+
+// Widget styles
+$widget-bg-color: #E6A8D7;     // Light Orchid
+$widget-border-color: #BA55D3; // Medium Orchid
+
 $background-color: #fff !default;
 $code-background-color: #fafafa !default;
 $code-background-color-dark: $light-gray !default;
@@ -71,13 +80,13 @@ $text-color: $dark-gray !default;
 $muted-text-color: mix(#fff, $text-color, 20%) !default;
 $border-color: $lighter-gray !default;
 $form-background-color: $lighter-gray !default;
-$footer-background-color: $lighter-gray !default;
+$footer-background-color: #E6A8D7;
 
-$primary-color: #6f777d !default;
+$primary-color: #DA70D6;
 $success-color: #3fa63f !default;
 $warning-color: #d67f05 !default;
 $danger-color: #ee5f5b !default;
-$info-color: #3b9cba !default;
+$info-color: #C71585 !default;
 $focus-color: $primary-color !default;
 $active-color: mix(#fff, $primary-color, 80%) !default;
 
@@ -88,7 +97,7 @@ $yiq-contrasted-threshold: 175 !default;
 $yiq-debug: false !default;
 
 /* brands */
-$behance-color: #1769ff !default;
+$behance-color: #BA55D3 !default;
 $bitbucket-color: #205081 !default;
 $dribbble-color: #ea4c89 !default;
 $facebook-color: #3b5998 !default;
@@ -114,8 +123,8 @@ $youtube-color: #bb0000 !default;
 $xing-color: #006567 !default;
 
 /* links */
-$link-color: mix(#000, $info-color, 20%) !default;
-$link-color-hover: mix(#000, $link-color, 25%) !default;
+$link-color: #EE82EE;
+$link-color-hover: #9932CC;
 $link-color-visited: mix(#fff, $link-color, 15%) !default;
 $masthead-link-color: $primary-color !default;
 $masthead-link-color-hover: mix(#000, $primary-color, 25%) !default;

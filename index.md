@@ -3,13 +3,11 @@ layout: single
 author_profile: false
 toc: true
 header:
-  image: /assets/images/LOVE.png
-  caption: "Photo by ..."
+  image: /assets/images/banner.png
+  caption: "Photo by GPT"
   
 related: false
 ---
-
-# Kinases Looking For Love 
 
 *Elite matchmaking in Switzerland and beyond for select single targets and ligands.*
 *For all the **Kinases**, if you feel ready for a new, lasting binding or fast thunderbolt, this tailor-made approach is your best choice.*

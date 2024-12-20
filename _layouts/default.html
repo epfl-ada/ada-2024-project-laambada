@@ -19,6 +19,28 @@
   {% include head.html %}
 </head>
 <body>
+  <div id="top-window" class="top-sliding-window">
+    <div class="top-window-content">
+      <hr>
+      <h2>BindingDB Dataset</h2>
+      <hr>
+      <p> The projecct is based on <a href="https://epfl-ada.github.io/teaching/fall2024/cs401/" target="_blank">BindingDB</a>.
+      dataset, a wide open source experimentally determined protein-ligand-affinity. *PUT THE VERSION*
+      <br>
+      <br>
+      <img src="../assets/images/bindingDB.png" alt="About us" style="width:100%">
+      <br>
+      <br>
+      We selected among 3 646 protein famillies the tyrosine-protein kinase hopscotch familly! 
+      <br> 
+      &#10085 9 proteins target
+      <br>
+      &#10085 30 348 ligands
+      
+      </p>
+    </div>
+  </div>
+  
   
     <div id="side-window" class="side-window">
       <button class="close-button" onclick="toggleSideWindow()">×</button>
@@ -70,7 +92,7 @@
       }
     </script>
 
-  
+  <script src="{{ "/assets/js/scroll-behavior.js" | relative_url }}"></script>
 
   </body>
 </html>
