@@ -39,7 +39,7 @@ kinases are the ones that contribute the most to human operations (thanks for th
   <button class="image-button"> Whats binding means for you</button>
     <div class="image-box">
       <figure>
-        <img src="/assets/plots/nan_fraction.png" alt="Plot 1" />
+        <img src="assets/plots/nan_fraction.png" alt="Plot 1" />
         <figcaption>Binding metric and reaction metric value count </figcaption>
       </figure>
     </div>
@@ -62,7 +62,7 @@ Hopefully, both are statistically linked so we can still orient our research by 
   <button class="image-button"> KI vs IC50 Correlation </button>
     <div class="image-box">
       <figure>
-        <iframe src="/assets/plots/pKi_pIC50.html" width="100%" height="400px"></iframe>
+        <iframe src="assets/plots/pKi_pIC50.html" width="100%" height="400px"></iframe>
         <figcaption> KI vs IC50 Correlation </figcaption>
       </figure>
   </div>
@@ -87,7 +87,7 @@ Describe what is a functional group here.
   <button class="image-button"> Functional Group Categories </button>
     <div class="image-box">
       <figure>
-        <img src="/assets/plots/functional_groups.png" alt="Plot 1" />
+        <img src="assets/plots/functional_groups.png" alt="Plot 1" />
         <figcaption> Functional Group Categories </figcaption>
       </figure>
   </div>
@@ -101,7 +101,7 @@ Now we consider some continous features and plot the ditrib :
   <button class="image-button"> Chemical Features Distribution </button>
     <div class="image-box">
       <figure>
-        <img src="/assets/plots/chemchar2.png" alt="chemchar" />
+        <img src="assets/plots/chemchar2.png" alt="chemchar" />
         <figcaption> chemical characterization </figcaption>
       </figure>
   </div>
@@ -111,7 +111,7 @@ Now we consider some continous features and plot the ditrib :
   <button class="image-button"> What our members say </button>
     <div class="image-box">
       <figure>
-        <iframe src="/assets/plots/top_matches.html" width="100%" height="400px"></iframe>
+        <iframe src="assets/plots/top_matches.html" width="100%" height="400px"></iframe>
         <figcaption> Top Candidate Ligands characterisation </figcaption>
       </figure>
   </div>
@@ -122,7 +122,7 @@ More complicated that it seems : Reg linear bewteen metric and char
   <button class="image-button"> Mutual Info Metric vs Chem Characterization </button>
     <div class="image-box">
       <figure>
-        <img src="/assets/plots/mutual_information.png" alt="chemchar" />
+        <img src="assets/plots/mutual_information.png" alt="chemchar" />
         <figcaption> Mutual Information bewteen metrcs and chemical characterization </figcaption>
       </figure>
   </div>
@@ -141,9 +141,9 @@ Oh, this summary doesn't look appealing. We obtained it by keeping the first two
 
 <div class="plot-container">
   <!-- First Plot -->
-  <img src="/assets/plots/umap_pIC_RDKIT_descriptors.png" alt="UMAP pIC RDKIT" class="plot active">
+  <img src="assets/plots/umap_pIC_RDKIT_descriptors.png" alt="UMAP pIC RDKIT" class="plot active">
   <!-- Second Plot -->
-  <img src="/assets/plots/umap_pKi_RDKIT_descriptors.png" alt="UMAP pKI RDKIT" class="plot active">
+  <img src="assets/plots/umap_pKi_RDKIT_descriptors.png" alt="UMAP pKI RDKIT" class="plot active">
 </div>
 
 <div class="switch-buttons">
@@ -155,7 +155,7 @@ Oh, this summary doesn't look appealing. We obtained it by keeping the first two
   <button class="image-button"> PCA componants </button>
     <div class="image-box">
       <figure>
-        <iframe src="/assets/plots/pca_features_RDKIT_descriptors.html" width="100%" height="400px"></iframe>
+        <iframe src="assets/plots/pca_features_RDKIT_descriptors.html" width="100%" height="400px"></iframe>
         <figcaption> PCA componants </figcaption>
       </figure>
   </div>
@@ -165,7 +165,7 @@ Specific to the target ? Familly of protein on this space
 
 <!--HERE TODO  does not work -->
 <div style="text-align: center;">
-  <iframe src="/assets/plots/umap_target_RDKIT_descriptors.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
+  <iframe src="assets/plots/umap_target_RDKIT_descriptors.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
   <p><em>RDKIT embedding space color per targets.</em></p>
 </div>
 
@@ -177,9 +177,9 @@ Inspired by our insightful partnership with RDKit, we contacted our next contrac
 
 <div class="plot-container">
   <!-- First Plot -->
-  <img src="/assets/plots/umap_pIC_Mol2Vec.png" alt="UMAP pIC Mol2Vec" class="plot active">
+  <img src="assets/plots/umap_pIC_Mol2Vec.png" alt="UMAP pIC Mol2Vec" class="plot active">
   <!-- Second Plot -->
-  <img src="/assets/plots/umap_pKi_Mol2Vec.png" alt="UMAP pKI Mol2Vec" class="plot active">
+  <img src="assets/plots/umap_pKi_Mol2Vec.png" alt="UMAP pKI Mol2Vec" class="plot active">
 </div>
 
 <div class="switch-buttons">
@@ -191,7 +191,7 @@ Inspired by our insightful partnership with RDKit, we contacted our next contrac
   <button class="image-button"> PCA componants </button>
     <div class="image-box">
       <figure>
-        <iframe src="/assets/plots/pca_features_Mol2Vec.html" width="100%" height="400px"></iframe>
+        <iframe src="assets/plots/pca_features_Mol2Vec.html" width="100%" height="400px"></iframe>
         <figcaption> PCA componants </figcaption>
       </figure>
   </div>
@@ -201,7 +201,7 @@ Specific to the target ? Familly of protein on this space
 
 <!--HERE TODO  WTF  does not work -->
 <div style="text-align: center;">
-  <iframe src="/assets/plots/umap_target_Mol2Vec.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
+  <iframe src="assets/plots/umap_target_Mol2Vec.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
   <p><em>Mol2Vec embedding space color per targets</em></p>
 </div>
 
@@ -211,9 +211,9 @@ This looks ... convoluted. We contacted Mol2Vec for further explanation but they
 ## Morgan Fingerprint embedding space 
 <div class="plot-container">
   <!-- First Plot -->
-  <img src="/assets/plots/umap_pIC_Morgan_Fingerprint.png" alt="UMAP pIC Morgan" class="plot active">
+  <img src="assets/plots/umap_pIC_Morgan_Fingerprint.png" alt="UMAP pIC Morgan" class="plot active">
   <!-- Second Plot -->
-  <img src="/assets/plots/umap_pKi_Morgan_Fingerprint.png" alt="UMAP pKi Morgan" class="plot active">
+  <img src="assets/plots/umap_pKi_Morgan_Fingerprint.png" alt="UMAP pKi Morgan" class="plot active">
 </div>
 
 <div class="switch-buttons">
@@ -226,7 +226,7 @@ This looks ... convoluted. We contacted Mol2Vec for further explanation but they
   <button class="image-button"> PCA componants </button>
     <div class="image-box">
       <figure>
-        <iframe src="/assets/plots/pca_features_Morgan_Fingerprint.html" width="100%" height="400px"></iframe>
+        <iframe src="assets/plots/pca_features_Morgan_Fingerprint.html" width="100%" height="400px"></iframe>
         <figcaption> PCA componants </figcaption>
       </figure>
   </div>
@@ -236,7 +236,7 @@ Specific to the target ? Familly of protein on this space
 
 <!--HERE TODO  does not work -->
 <div style="text-align: center;">
-  <iframe src="/assets/plots/umap_target_Morgan_Fingerprint.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
+  <iframe src="assets/plots/umap_target_Morgan_Fingerprint.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
   <p><em>Morgan Fingerprint embedding space color per targets</em></p>
 </div>
 
@@ -249,9 +249,9 @@ Let's look at our Big Matchmaker.
 
 <div class="plot-container">
   <!-- First Plot -->
-  <img src="/assets/plots/umap_pIC_full.png" alt="UMAP pIC all" class="plot active">
+  <img src="assets/plots/umap_pIC_full.png" alt="UMAP pIC all" class="plot active">
   <!-- Second Plot -->
-  <img  src="/assets/plots/umap_pKi_full.png" alt="UMAP pIC all" class="plot active">
+  <img  src="assets/plots/umap_pKi_full.png" alt="UMAP pIC all" class="plot active">
 </div>
 
 <div class="switch-buttons">
@@ -263,7 +263,7 @@ Let's look at our Big Matchmaker.
   <button class="image-button"> PCA componants </button>
     <div class="image-box">
       <figure>
-        <iframe src="/assets/plots/pca_features_full.html" width="100%" height="400px"></iframe>
+        <iframe src="assets/plots/pca_features_full.html" width="100%" height="400px"></iframe>
         <figcaption> PCA componants </figcaption>
       </figure>
   </div>
@@ -273,7 +273,7 @@ Specific to the target ? Familly of protein on this space
 
 <!--HERE TODO  does not work -->
 <div style="text-align: center;">
-  <iframe src="/assets/plots/umap_target_full.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
+  <iframe src="assets/plots/umap_target_full.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
   <p><em>Full embedding space color per targets</em></p>
 </div>
 
