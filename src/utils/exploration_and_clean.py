@@ -3,6 +3,13 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 def explore_column(df, i, return_unique = False):
+    '''
+    Explore a column of the dataset. Prints:
+    * Column name
+    * Number of nan values
+    * Number of unique values
+    * Unique values if their are less than 25
+    '''
     columns = df.columns
     column_name = columns[i]
     print(f'# {column_name}')
@@ -20,6 +27,19 @@ def explore_column(df, i, return_unique = False):
         return unique_values
     
 def describe_column(df, column_name, print_types=True, print_uniques_values=True, print_missing_values=True):
+    '''
+    Describe a column of the dataset. Prints:
+    * Types of data in the column
+    * Number of unique values
+    * Number of missing values
+
+    Parameters:
+    * df: DataFrame
+    * column_name: str
+    * print_types: bool
+    * print_uniques_values: bool
+    * print_missing_values: bool
+    '''
     if column_name not in df.columns:
         raise ValueError("The column name is not in the dataframe")
     if print_types:
@@ -32,6 +52,19 @@ def describe_column(df, column_name, print_types=True, print_uniques_values=True
 
 
 def quick_check_column(df, i, treshold = 100):
+    '''
+    A quicker way to explore a column of the dataset. If the percentage of nan values is below the treshold, prints:
+    * Column name
+    * Number of nan values
+    * Number of unique values
+    * Unique values if their are less than 25
+
+    Parameters:
+    * df: DataFrame
+    * i: int, index of the column to explore
+    * treshold: int, a percentage 
+
+    '''
     columns = df.columns
     column_name = columns[i]
     nb_nan = df[column_name].isna().sum()
@@ -47,6 +80,18 @@ def quick_check_column(df, i, treshold = 100):
 
 
 def clean_metrics(column) : 
+    '''
+    Metric cleaning ! The metrics are stored as strings in the dataset, with some characters that are not numbers.
+    This function cleans the metrics by removing any character that is not a number, a dot or a minus sign.
+    It is speciffically designed for the IC50 and Ki columns, the metrics of interest.
+
+    Parameters:
+    * column: pd.Series, the column to clean
+
+    Returns:
+    * clean_numerical_column: pd.Series, the cleaned column
+    '''
+
     # Some strings have blank space and < > 
     # Remove any character that is not number + the blank space but keep if we have >< signes to not replace >100 by 100
     clean_column = column.str.replace(r'[^0-9.\-<>]', '', regex=True).str.strip()
@@ -57,20 +102,22 @@ def clean_metrics(column) :
     return clean_numerical_column 
 
 def plot_chemical_property_distributions(df, metrics, chemical_properties, properties_colors, filepath, plot_metrics, df_embeddings=None):
-    """
-    Plot the distribution of chemical properties and additional metrics for ligands.
+    '''
+    Plot the distribution of chemical properties of the ligands, and eventually the metrics for the ligands.
+    The metrics are in the df, and the chemical properties can be in either dataframes.
 
     Parameters:
-    - df (pd.DataFrame): Main DataFrame containing ligand data.
-    - df_embeddings (pd.DataFrame): DataFrame containing RDKit-derived chemical properties.
-    - metrics (list): List of metric column names to plot (e.g., pKi, pIC50).
+    - df (pd.DataFrame): Main DataFrame containing the SMILES strings and the metrics.
+    - metrics (list): List of metric column names to plot (specifically pKi, pIC50).
     - chemical_properties (list): List of chemical properties or features to visualize.
-    - properties_colors (list): List of colors for the histogram plots of chemical properties.
-    - title (str): Title of the overall plot.
-
+    - properties_colors (list): List of colors to use for each chemical property.
+    - filepath (str): Path to save the Plotly figure as an HTML file.
+    - plot_metrics (bool): Whether to plot the metrics histograms.
+    - df_embeddings (pd.DataFrame): DataFrame containing RDKit-derived chemical properties.
+    
     Returns:
     - None. Displays the generated Plotly figure.
-    """
+    '''
     # Calculate number of rows and columns for subplots
     n_metrics = len(metrics)
     n_properties = len(chemical_properties)
@@ -91,7 +138,7 @@ def plot_chemical_property_distributions(df, metrics, chemical_properties, prope
             df_to_plot = df.merge(df_embeddings, on='Ligand SMILES', how='left').dropna(subset=metric)
 
         for j, property in enumerate(chemical_properties):
-            color = properties_colors[j % len(properties_colors)]  # Cycle through colors
+            color = properties_colors[j % len(properties_colors)]  
             x = df_to_plot[property]
             fig.add_trace(
                 go.Histogram(x=x, name=property, showlegend=False, marker_color=color),

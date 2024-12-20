@@ -4,6 +4,10 @@ import numpy as np
 
 # Load the whole dataset here as a data frame
 def load_full_dataset(zip_file_path = '../data/BindingDB_All_tsv.zip', tsv_file_name = 'BindingDB_All.tsv'):
+    '''
+    Loads the full BindingDB dataset from a zip file into a DataFrame.
+    '''
+
     # Open the zip file
     with zipfile.ZipFile(zip_file_path, 'r') as z:
         # Open the TSV file within the zip
@@ -14,6 +18,9 @@ def load_full_dataset(zip_file_path = '../data/BindingDB_All_tsv.zip', tsv_file_
     return df
 
 def load_data(zip_file_path = 'src/data/clean_subset.csv.zip'):
+    '''
+    Loads the cleaned dataset from a zip file into a DataFrame.
+    '''
     df = pd.read_csv(zip_file_path, compression='zip')
     try:
         df = log_data(df)
@@ -22,6 +29,9 @@ def load_data(zip_file_path = 'src/data/clean_subset.csv.zip'):
     return df
 
 def log_data(df_clean):
+    '''
+    Turn the IC50 and Ki columns into pIC50 and pKi columns.
+    '''
     df_clean['pIC50'] = np.where(
     df_clean['IC50 (nM)'] > 0,  # Only apply log10 to positive values
     -np.log10(df_clean['IC50 (nM)'] * 1e-9),  # Transform to molar and take -log10
@@ -36,6 +46,9 @@ def log_data(df_clean):
     return df_clean
 
 def save_embeddings(smiles, embeddings, name, folder):
+    '''
+    Save the embeddings and corresponding SMILES to a CSV file
+    '''
     df_embeddings = pd.DataFrame(embeddings)
     df_embeddings['Ligand SMILES'] = smiles
     df_embeddings.set_index('Ligand SMILES', inplace=True)

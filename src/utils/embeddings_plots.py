@@ -1,4 +1,3 @@
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 from plotly.subplots import make_subplots
@@ -8,6 +7,17 @@ import pandas as pd
 import numpy as np
 
 def create_target_plot(df_merged, reduction ) : 
+    '''
+    Create a scatter plot for the dimensionality (UMAP or PCA) reduction visualization.
+    The plot is colored by the Protein target name for each point.
+
+    Parameters:
+    - df_merged (pd.DataFrame): DataFrame containing the dimensionality reduction results
+    - reduction (str): Type of reduction to use for the plot
+
+    Returns:
+    - go.Figure: Plotly figure object
+    '''
     if reduction == 'PCA':
         fig = px.scatter(df_merged, x='PC1', y='PC2', color='Target Name')
 
@@ -20,17 +30,28 @@ def create_target_plot(df_merged, reduction ) :
     return fig
 
 def create_properties_plot(df_merged, reduction ):
+    '''
+    Crate a scatter plot for the dimensionality (UMAP or PCA) reduction visualization.
+    The plot is colored by the Protein target name for each point.
+
+    Parameters:
+    - df_merged (pd.DataFrame): DataFrame containing the chemical properties
+    - reduction (str): Type of reduction to use for the plot
+
+    Returns:
+    - go.Figure: Plotly figure object
+    '''
     df_pKi = df_merged.dropna(subset=['pKi'])
     df_pIC = df_merged.dropna(subset=['pIC50'])
 
-    # 1. for pKi
+    # 1. For pKi
     fig_pKi = go.Figure()
 
     # Add initial trace with Ki as the color axis
     marker = marker=dict(
                 color=df_pKi['pKi'],
                 colorbar=dict(title='pKI Value'),
-                colorscale='PuRd'#Viridis'
+                colorscale='PuRd'
             )
     if reduction == 'PCA':
         x_col = 'PC1'
@@ -53,12 +74,12 @@ def create_properties_plot(df_merged, reduction ):
         yaxis_title=y_col
     )
 
-    # 2. for pIC50
+    # 2. For pIC50
     fig_pIC = go.Figure()
     marker = marker=dict(
                 color=df_pIC['pIC50'],
                 colorbar=dict(title='pIC50 Value'),
-                colorscale='PuRd'#Viridis' PuRd
+                colorscale='PuRd'
             )
     if reduction == 'PCA':
         x_col = 'PC1'
@@ -83,91 +104,17 @@ def create_properties_plot(df_merged, reduction ):
 
     return fig_pKi, fig_pIC
 
-# TODO remove
-def create_properties_plotold(df_merged, reduction ) : 
-    
-    fig = go.Figure()
-
-    # Add initial trace with Ki as the color axis
-    marker = marker=dict(
-                color=df_merged['pKi'],
-                colorbar=dict(title='pKi Value'),
-                colorscale='PuRd'#Viridis'
-            )
-    if reduction == 'PCA':
-        x_col = 'PC1'
-        y_col = 'PC2'
-    elif reduction == 'UMAP':
-        x_col = 'UMAP1'
-        y_col = 'UMAP2'
-    df_pKi = df_merged.dropna(subset=['pKi'])
-    df_pIC = df_merged.dropna(subset=['pIC50'])
-    fig.add_trace(
-        go.Scatter(
-            x=df_pKi[x_col],
-            y=df_pKi[y_col],
-            mode="markers",
-            marker=marker
-        )
-    )
-
-    # Define buttons for switching between Ki and IC50
-
-    buttons = [
-        dict(
-            label='pKi',
-            method='update',
-            args=[{
-                'x': [df_pKi[x_col]],
-                'y': [df_pKi[y_col]],
-                'marker.color': [df_pKi['pKi']],
-                'marker.colorbar.title': ['pKi Value']
-            }]
-        ),
-        dict(
-            label='pIC50',
-            method='update',
-            args=[{
-                'x': [df_pIC[x_col]],
-                'y': [df_pIC[y_col]],
-                'marker.color': [df_pIC['pIC50']],
-                'marker.colorbar.title': ['pIC50 Value']
-            }]
-        )
-    ]
-
-    # Add buttons to layout
-    fig.update_layout(
-        updatemenus=[
-            dict(
-                type="buttons",
-                buttons=buttons,
-                direction="down",
-                pad={"r": 10, "t": 0},
-                showactive=True,
-                x=0.17,
-                xanchor="left",
-                y=1.15,
-                yanchor="top"
-            )
-        ]
-    )
-
-    # Update layout to move the legend to the bottom
-    fig.update_layout(
-        legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=-0.5,
-            xanchor="center",
-            x=0.5
-        ), 
-        xaxis_title=x_col,
-        yaxis_title=y_col
-    )
-    return fig
 
 def reduce_family(value) : 
+    '''
+    Simplify the protein target name, by removing the specific mutants to group the similar proteins together.
+
+    Parameters:
+    - value (str): Protein target name
+
+    Returns:
+    - str: Reduced protein target name
+    '''
     conditions_met = 0
     result = value
     if 'Tyrosine-protein kinase JAK2' in value : 
