@@ -107,8 +107,18 @@ Well, let's go all-in and look for every available piece of information regardin
 
 Oh, this summary doesn't look appealing. We obtained it by keeping the first two components of the PCA of chemical characterization. Maybe that is still too much extra information? Let's go one step further and apply t-SNE on our PCA-reduced profiles.
 
-<iframe src="/assets/plots/pca_features_RDKIT_descriptors.html" width="100%" height="400px"></iframe>
+
 <iframe src="/assets/plots/reduction_plots_RDKIT_descriptors.html" width="100%" height="400px"></iframe>
+
+<div class="image-container2">
+  <button class="image-button"> PCA componants </button>
+    <div class="image-box">
+      <figure>
+        <iframe src="/assets/plots/pca_features_RDKIT_descriptors.html" width="100%" height="400px"></iframe>
+        <figcaption> PCA componants </figcaption>
+      </figure>
+  </div>
+</div>
 
 Looks better! Now it is clear that our clients definitely have their preferences when it comes to binding partners. Maybe we can go even further and uncover some deeply rooted preferences that even kinases do not know about? Time to dive into machine learning!
 
@@ -116,16 +126,35 @@ Looks better! Now it is clear that our clients definitely have their preferences
 
 Inspired by our insightful partnership with RDKit, we contacted our next contractor – Mol2Vec. This agency does the dirty work of finding a meaningful representation of chemical properties and similarities between molecules for you. It considers the ligands for what they, in essence, are – atoms connected by bonds – and constructs vectors that capture everything you need to know. Straight to the point, so that our kinases do not lose their precious time on ligands that weren't meant for them from the beginning. Once again, we care about the comfort of our customers, that's way we propose a dimensionally reduced summary of our findings.
 
-<iframe src="/assets/plots/pca_features_Mol2Vec.html" width="100%" height="400px"></iframe>
 <iframe src="/assets/plots/reduction_plots_Mol2Vec.html" width="100%" height="400px"></iframe>
+
+<div class="image-container2">
+  <button class="image-button"> PCA componants </button>
+    <div class="image-box">
+      <figure>
+        <iframe src="/assets/plots/pca_features_Mol2Vec.html" width="100%" height="400px"></iframe>
+        <figcaption> PCA componants </figcaption>
+      </figure>
+  </div>
+</div>
 
 This looks ... convoluted. We contacted Mol2Vec for further explanation but they declined responsibility and accused us of providing ligands that were too structurally similar to be separated. Well, this partnership will not last any longer!
 
 
 ## Morgan Fingerprint embedding space 
 
-<iframe src="/assets/plots/pca_features_Morgan_Fingerprint.html" width="100%" height="400px"></iframe>
+
 <iframe src="/assets/plots/reduction_plots_Morgan_Fingerprint.html" width="100%" height="400px"></iframe> 
+
+<div class="image-container2">
+  <button class="image-button"> PCA componants </button>
+    <div class="image-box">
+      <figure>
+        <iframe src="/assets/plots/pca_features_Morgan_Fingerprint.html" width="100%" height="400px"></iframe>
+        <figcaption> PCA componants </figcaption>
+      </figure>
+  </div>
+</div>
 
 ## Our very own embedding
 
@@ -133,9 +162,17 @@ Luckily, our agency has an R&D department of its own. Who needs rude contractors
 
 Let's look at our Big Matchmaker.
 
-<iframe src="/assets/plots/pca_features_full.html" width="100%" height="400px"></iframe>
 <iframe src="/assets/plots/reduction_plots_full.html" width="100%" height="400px"></iframe> 
 
+<div class="image-container2">
+  <button class="image-button"> PCA componants </button>
+    <div class="image-box">
+      <figure>
+        <iframe src="/assets/plots/pca_features_full.html" width="100%" height="400px"></iframe>
+        <figcaption> PCA componants </figcaption>
+      </figure>
+  </div>
+</div>
 
 # Special space for special guests
 
