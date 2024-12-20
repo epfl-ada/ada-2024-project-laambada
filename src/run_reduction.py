@@ -85,15 +85,15 @@ def create_pca_feature_importance_plot(data, pca, fig_output_path, n_embeddings=
     fig = px.imshow(
         loadings_df,
         aspect='auto',
-        color_continuous_scale='peach',
-        title='PCA Feature Importance Heatmap',
+        color_continuous_scale='picnic',
+        #title='PCA Feature Importance Heatmap', Remove title for better site integration
         labels={'x': 'Principal Components', 'y': 'Features', 'color': 'Loading'}
     )
 
     # Update layout
     fig.update_layout(
-        width=1000,
-        height=800,
+        width=500,
+        height=400,
         xaxis_side='bottom',
         yaxis={'tickmode': 'linear'}
     )
@@ -103,29 +103,46 @@ def create_pca_feature_importance_plot(data, pca, fig_output_path, n_embeddings=
         
     return fig
 
-def vizualize_reduction(pca, umap, df, fig_output_path):
+def vizualize_reduction(pca, umap, df, output_dir, name):
     
 
-    df_merged_pca = df.merge(pca, on='Ligand SMILES')
-    df_merged_umap = df.merge(umap, on='Ligand SMILES')
+    df_merged_pca = df.merge(pca, on='Ligand SMILES', how='left')
+    df_merged_umap = df.merge(umap, on='Ligand SMILES', how='left')
     
     fig_target_pca = create_target_plot(df_merged_pca, 'PCA')
     fig_target_umap = create_target_plot(df_merged_umap, 'UMAP')
     
-    fig_properties_pca = create_properties_plot(df_merged_pca, 'PCA')
-    fig_properties_umap = create_properties_plot(df_merged_umap, 'UMAP')
+    #fig_properties_pca = create_properties_plot(df_merged_pca, 'PCA')
+    #fig_properties_umap = create_properties_plot(df_merged_umap, 'UMAP')
+
+    fig_pKi_pca, fig_pIC_pca = create_properties_plot(df_merged_pca, 'PCA')
+    fig_pKi_umap, fig_pIC_umap = create_properties_plot(df_merged_umap, 'UMAP')
     
     fig_target_pca.show()
     fig_target_umap.show()
-    fig_properties_pca.show()
-    fig_properties_umap.show()
+    fig_pKi_pca.show()
+    fig_pIC_pca.show()
+    #fig_properties_umap.show()
     
     # save the figures
+    fig_output_path = os.path.join(output_dir, f'pca_target_{name}.html')
     fig_target_pca.write_html(fig_output_path)
+
+    fig_output_path = os.path.join(output_dir, f'umap_target_{name}.html')
     fig_target_umap.write_html(fig_output_path)
-    fig_properties_pca.write_html(fig_output_path)
-    fig_properties_umap.write_html(fig_output_path)
-    
+
+    fig_output_path = os.path.join(output_dir, f'pca_pKi_{name}.html')
+    fig_pKi_pca.write_html(fig_output_path)
+
+    fig_output_path = os.path.join(output_dir, f'pca_pIC_{name}.html')
+    fig_pIC_pca.write_html(fig_output_path)
+
+    fig_output_path = os.path.join(output_dir, f'umap_pKi_{name}.html')
+    fig_pKi_umap.write_html(fig_output_path)
+
+    fig_output_path = os.path.join(output_dir, f'umap_pIC_{name}.html')
+    fig_pIC_umap.write_html(fig_output_path)
+
     return None
 
 def run_analysis(main_df, input_data_path, output_dir='src/data/embeddings_dim_reduction/', 
@@ -174,8 +191,9 @@ def run_analysis(main_df, input_data_path, output_dir='src/data/embeddings_dim_r
     umap_df = run_umap_reduction(scaled_descriptors, smiles_data, umap_save_path, random_state=umap_random_state)
     
     # Create visualizations
-    fig_output_path = os.path.join(output_dir, f'reduction_plots_{name}.html')
-    vizualize_reduction(pca_df, umap_df, main_df, fig_output_path)
+    #fig_output_path = os.path.join(output_dir, f'reduction_plots_{name}.html')
+    #vizualize_reduction(pca_df, umap_df, main_df, fig_output_path)
+    vizualize_reduction(pca_df, umap_df, main_df, output_dir, name)
     
  
 
