@@ -99,17 +99,12 @@ Now let's consider some continuous features.
   </div>
 </div>
 
-###Popular matches!
+### Popular matches!
 Some of our ligands were popular and were tested for many matches. 45 were involved in more than 25 dates: we can observe that the standard deviation of the success of their matches is pretty different across them.
 
-<div class="image-container2">
-  <button class="image-button"> What our members say </button>
-    <div class="image-box">
-      <figure>
-        <iframe src="assets/plots/top_matches.html" width="100%" height="400px"></iframe>
-        <figcaption> Top Candidate Ligands characterisation </figcaption>
-      </figure>
-  </div>
+<div >
+  <!-- First Plot -->
+  <img src="assets/plots/top_matches.png" alt="UMAP pIC Morgan">
 </div>
 
 
@@ -133,9 +128,9 @@ The mutual information between the metrics and the chemical properties is close 
 Well, let's go all-in and look for every available piece of information regarding the chemistry of our candidates! Proud of our partnership with RDKit, an undercover chemical detective agency, we chemically profiled the candidates using all Descriptors provided by RDKit. Of course, nobody would want to go through such extensive profiling for the many candidates in our catalogues – kinases have better things to do – that's why we propose a conveniently rendered summary obtained through dimensionality reduction techniques, so that our clients could quickly skim through the pages of available ligands and skip a heartbeat when seeing _the one_.
 
 <div >
-  <img src="assets/plots/umap_pIC_RDKIT_descriptors.png" alt="UMAP pIC RDKIT" >
+  <img src="assets/plots/umap_pIC_RDKIT_descriptors.png"  >
 
-  <img src="assets/plots/umap_pKi_RDKIT_descriptors.png" alt="UMAP pKI RDKIT">
+  <img src="assets/plots/umap_pKi_RDKIT_descriptors.png" >
 </div>
 <div class="image-container2">
   <button class="image-button"> PCA componants </button>
@@ -192,7 +187,7 @@ This looks ... convoluted. We contacted Mol2Vec for further explanation but they
 
 Luckily, there is no shortage of embedding contractors and Morgan Fingerprints came to save the day. Let's take a look at their insights. 
 
-<div class="plot-container">
+<div >
   <!-- First Plot -->
   <img src="assets/plots/umap_pIC_Morgan_Fingerprint.png" alt="UMAP pIC Morgan">
   <!-- Second Plot -->
@@ -216,7 +211,12 @@ Luckily, there is no shortage of embedding contractors and Morgan Fingerprints c
   <p><em>Morgan Fingerprint embedding space color per targets</em></p>
 </div>
 
-<div class="plot-container">
+
+## Full Embedding Space
+
+We have gathered all the embeddings from our contractors and combined them into a single, full embedding space. This way, our clients can have a comprehensive overview of the ligands and quickly find the one that makes their binding pocket tingle.
+
+<div >
   <!-- First Plot -->
   <img src="assets/plots/umap_pIC_full.png" alt="UMAP pIC all" >
   <!-- Second Plot -->
