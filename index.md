@@ -154,18 +154,11 @@ Well, let's go all-in and look for every available piece of information regardin
 
 Oh, this summary doesn't look appealing. We obtained it by keeping the first two components of the PCA of chemical characterization. Maybe that is still too much extra information? Let's go one step further and apply t-SNE on our PCA-reduced profiles.
 
-<div class="plot-container">
-  <!-- First Plot -->
-  <img src="assets/plots/umap_pIC_RDKIT_descriptors.png" alt="UMAP pIC RDKIT" class="plot active">
-  <!-- Second Plot -->
-  <img src="assets/plots/umap_pKi_RDKIT_descriptors.png" alt="UMAP pKI RDKIT" class="plot active">
-</div>
+<div >
+  <img src="assets/plots/umap_pIC_RDKIT_descriptors.png" alt="UMAP pIC RDKIT" >
 
-<div class="switch-buttons">
-  <button onclick="switchPlot(0)">IC50</button>
-  <button onclick="switchPlot(1)">KI</button>
+  <img src="assets/plots/umap_pKi_RDKIT_descriptors.png" alt="UMAP pKI RDKIT">
 </div>
-
 <div class="image-container2">
   <button class="image-button"> PCA componants </button>
     <div class="image-box">
@@ -178,11 +171,13 @@ Oh, this summary doesn't look appealing. We obtained it by keeping the first two
 
 Specific to the target ? Familly of protein on this space 
 
-<!--HERE TODO  does not work -->
+
 <div style="text-align: center;">
-  <iframe src="assets/plots/umap_target_RDKIT_descriptors.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
+  <!-- First Plot -->
+  <img src="assets/plots/umap_target_RDKIT_descriptors.png" >
   <p><em>RDKIT embedding space color per targets.</em></p>
 </div>
+
 
 Looks better! Now it is clear that our clients definitely have their preferences when it comes to binding partners. Maybe we can go even further and uncover some deeply rooted preferences that even kinases do not know about? Time to dive into machine learning!
 
@@ -190,16 +185,11 @@ Looks better! Now it is clear that our clients definitely have their preferences
 
 Inspired by our insightful partnership with RDKit, we contacted our next contractor – Mol2Vec. This agency does the dirty work of finding a meaningful representation of chemical properties and similarities between molecules for you. It considers the ligands for what they, in essence, are – atoms connected by bonds – and constructs vectors that capture everything you need to know. Straight to the point, so that our kinases do not lose their precious time on ligands that weren't meant for them from the beginning. Once again, we care about the comfort of our customers, that's way we propose a dimensionally reduced summary of our findings.
 
-<div class="plot-container">
+<div>
   <!-- First Plot -->
-  <img src="assets/plots/umap_pIC_Mol2Vec.png" alt="UMAP pIC Mol2Vec" class="plot active">
+  <img src="assets/plots/umap_pIC_Mol2Vec.png" alt="UMAP pIC Mol2Vec" >
   <!-- Second Plot -->
-  <img src="assets/plots/umap_pKi_Mol2Vec.png" alt="UMAP pKI Mol2Vec" class="plot active">
-</div>
-
-<div class="switch-buttons">
-  <button onclick="switchPlot(0)">IC50</button>
-  <button onclick="switchPlot(1)">KI</button>
+  <img src="assets/plots/umap_pKi_Mol2Vec.png" alt="UMAP pKI Mol2Vec">
 </div>
 
 <div class="image-container2">
@@ -214,9 +204,9 @@ Inspired by our insightful partnership with RDKit, we contacted our next contrac
 
 Specific to the target ? Familly of protein on this space 
 
-<!--HERE TODO  WTF  does not work -->
 <div style="text-align: center;">
-  <iframe src="assets/plots/umap_target_Mol2Vec.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
+  <!-- First Plot -->
+  <img src="assets/plots/umap_target_Mol2Vec.png" >
   <p><em>Mol2Vec embedding space color per targets</em></p>
 </div>
 
@@ -224,18 +214,12 @@ This looks ... convoluted. We contacted Mol2Vec for further explanation but they
 
 
 ## Morgan Fingerprint embedding space 
-<div class="plot-container">
+<div >
   <!-- First Plot -->
-  <img src="assets/plots/umap_pIC_Morgan_Fingerprint.png" alt="UMAP pIC Morgan" class="plot active">
+  <img src="assets/plots/umap_pIC_Morgan_Fingerprint.png" alt="UMAP pIC Morgan">
   <!-- Second Plot -->
-  <img src="assets/plots/umap_pKi_Morgan_Fingerprint.png" alt="UMAP pKi Morgan" class="plot active">
+  <img src="assets/plots/umap_pKi_Morgan_Fingerprint.png" alt="UMAP pKi Morgan">
 </div>
-
-<div class="switch-buttons">
-  <button onclick="switchPlot(0)">IC50</button>
-  <button onclick="switchPlot(1)">KI</button>
-</div>
-
 
 <div class="image-container2">
   <button class="image-button"> PCA componants </button>
@@ -249,12 +233,11 @@ This looks ... convoluted. We contacted Mol2Vec for further explanation but they
 
 Specific to the target ? Familly of protein on this space 
 
-<!--HERE TODO  does not work -->
 <div style="text-align: center;">
-  <iframe src="assets/plots/umap_target_Morgan_Fingerprint.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
+  <!-- First Plot -->
+  <img src="assets/plots/umap_target_Morgan_Fingerprint.png" >
   <p><em>Morgan Fingerprint embedding space color per targets</em></p>
 </div>
-
 
 ## Our very own embedding
 
@@ -262,16 +245,11 @@ Luckily, our agency has an R&D department of its own. Who needs rude contractors
 
 Let's look at our Big Matchmaker.
 
-<div class="plot-container">
+<div>
   <!-- First Plot -->
-  <img src="assets/plots/umap_pIC_full.png" alt="UMAP pIC all" class="plot active">
+  <img src="assets/plots/umap_pIC_full.png" alt="UMAP pIC all" >
   <!-- Second Plot -->
-  <img  src="assets/plots/umap_pKi_full.png" alt="UMAP pIC all" class="plot active">
-</div>
-
-<div class="switch-buttons">
-  <button onclick="switchPlot(0)">IC50</button>
-  <button onclick="switchPlot(1)">KI</button>
+  <img  src="assets/plots/umap_pKi_full.png" alt="UMAP pIC all">
 </div>
 
 <div class="image-container2">
@@ -286,12 +264,11 @@ Let's look at our Big Matchmaker.
 
 Specific to the target ? Familly of protein on this space 
 
-<!--HERE TODO  does not work -->
 <div style="text-align: center;">
-  <iframe src="assets/plots/umap_target_full.html" class="plot" frameborder="0" style="width: 100%; height: 400px;"></iframe>
+  <!-- First Plot -->
+  <img src="assets/plots/umap_target_full.png" alt="UMAP pIC all" >
   <p><em>Full embedding space color per targets</em></p>
 </div>
-
 
 # Special space for special guests
 
