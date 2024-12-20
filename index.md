@@ -99,6 +99,9 @@ Now let's consider some continuous features.
   </div>
 </div>
 
+###Popular matches!
+Some of our ligands were popular and were tested for many matches. 45 were involved in more than 25 dates: we can observe that the standard deviation of the success of their matches is pretty different across them.
+
 <div class="image-container2">
   <button class="image-button"> What our members say </button>
     <div class="image-box">
@@ -108,6 +111,9 @@ Now let's consider some continuous features.
       </figure>
   </div>
 </div>
+
+
+The mutual information between the metrics and the chemical properties is close to zero. This suggests that chemical properties and binding metrics are not related when taken as they are. This motivates the use of embeddings to try to have a more complex representation of the ligands.
 
 <div class="image-container2">
   <button class="image-button"> Mutual Info Metric vs Chem Characterization </button>
