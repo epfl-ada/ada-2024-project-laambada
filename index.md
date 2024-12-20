@@ -37,7 +37,6 @@ Seems like everyone is talking about *IC50* out there! It is the amount of ligan
 
 Our R&D department found that *IC50* and *Ki* are, in fact, very correlated. So, good news, we can safely rely on either metric to find your match!
 
-<!--HERE TODO  : reshape the image in the container -->
 
 <button onclick="togglePlot('kiIc50Plot')" style="padding: 10px 20px; margin: 20px 0; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
   Ki vs IC50 Correlation
@@ -88,7 +87,6 @@ RDKit, a chemical detective agency and our dearest contractor, shared its insigh
 ## Continuous Features 
 Now let's consider some continuous features. 
 
-<!--HERE TODO  reshape the image in the container-->
 <div class="image-container2">
   <button class="image-button"> Chemical Features Distribution </button>
     <div class="image-box">
@@ -125,7 +123,7 @@ The mutual information between the metrics and the chemical properties is close 
 
 ## Embedding Space From Rdkit
 
-Well, let's go all-in and look for every available piece of information regarding the chemistry of our candidates! Proud of our partnership with RDKit, an undercover chemical detective agency, we chemically profiled the candidates using all Descriptors provided by RDKit. Of course, nobody would want to go through such extensive profiling for the many candidates in our catalogues – kinases have better things to do – that's why we propose a conveniently rendered summary obtained through dimensionality reduction techniques, so that our clients could quickly skim through the pages of available ligands and skip a heartbeat when seeing _the one_.
+Well, let's go all-in and look for every available piece of information regarding the chemistry of our candidates! Proud of our partnership with RDKit, an undercover chemical detective agency, we chemically profiled the candidates using all Descriptors provided by RDKit. Of course, nobody would want to go through such extensive profiling for the many candidates in our catalogues – kinases have better things to do – that's why we propose a conveniently rendered summary obtained through dimensionality reduction techniques, so that our clients could quickly skim through the pages of available ligands and skip a heartbeat when seeing _the one_. The UMAP plots below show the embedding space of the ligands based on their RDKit descriptors and colored by their binding metrics in order to see if ligand groups can be clustered by their descriptors and if these clusters are related to the binding metrics.
 
 <div >
   <img src="assets/plots/umap_pIC_RDKIT_descriptors.png"  >
@@ -173,7 +171,6 @@ Inspired by our insightful partnership with RDKit, we contacted our next contrac
   </div>
 </div>
 
-<!--HERE TODO  WTF  does not work -->
 <div style="text-align: center;">
   <!-- First Plot -->
   <img src="assets/plots/umap_target_Mol2Vec.png" >
@@ -247,11 +244,15 @@ Here is the latest hit in matchmaking – predicting binding affinities using ma
 
 ## Multilayer Perceptron
 
-In order to predict binding affinities, we trained a multilayer perceptron that took the concatenated embeddings as input. Sadly many of our clients were left disappointed as the model was not able to predict the binding affinities with a satisfying accuracy.
+Our economic tier model was a multilayer perceptron that took the concatenated embeddings as input, cheap, reliable and fast. Training with all the new features, from shiny hyperparameter tuning to the latest in data preprocessing, we were ready to make some predictions.
+Sadly many of our clients were left disappointed as the model was not able to predict the binding affinities with a satisfying accuracy.
 
 ### Graph Neural Network
 
-Inspired by what is considered to be state of the art in terms of ML models in drug discovery, we trained our own graph neural network (GNN) to predict affinities. Each ligand was represented as a graph containing the information about its structure. We added some relevant RDKit Descriptors to the nodes and some bond information to the edges of the graphs. Then we trained a GNN that took in input a graph and outputed the pIC50 of the ligand. The model was still not able to predict the binding affinities with a satisfying accuracy. Actually both models had a similar performance with a R² that most of our clients would consider as a deal breaker.
+For our truly speecial clients, we have a special model. Directly inspired by what is considered to be state of the art in terms of ML models in drug discovery, we trained our own graph neural network (GNN) to predict affinities. Each ligand was represented as a graph containing the information about its structure. We added some relevant RDKit Descriptors to the nodes and some bond information to the edges of the graphs. Then we trained a GNN that took in input a graph and was trained to output the pIC50 of the ligand.  Hours of training and tuning later, we were ready to make some predictions.
+The model was still not able to predict the binding affinities with a satisfying accuracy. 
+
+Actually both models had a similar performance with a R² that most of our clients would consider as a deal breaker. Proof that even the most advanced models can't replace the human touch in matchmaking.
 
 <div >
   <!-- First Plot -->
