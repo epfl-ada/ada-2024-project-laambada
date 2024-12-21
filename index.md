@@ -24,23 +24,23 @@ Sounds interesting? Let's find out how we do our data-driven magic.
 How do you know you are happy with your partner? Does your ligand hug you with the highest possible affinity? Does it shield you from unwanted interactions? In other words, what binding criteria matter to you, our dear kinases?
 
 <div class="image-container2">
-  <button class="image-button"> What does binding mean to you? </button>
+  <button class="image-button"> What binding metrics do you prefer? </button>
     <div class="image-box">
       <figure>
-        <img src="assets/plots/nan_fraction.png" alt="Plot 1" />
+        <img src="assets/plots/nan_fraction.png" alt="Metrics" />
         <figcaption> Counts of Different Binding Metrics </figcaption>
       </figure>
     </div>
 </div>
 
-Seems like everyone is talking about *IC50* out there! It is the amount of ligand that makes you slow down to exactly a half of your activity. We understand why you prefer this metric – we too would love to find someone to quickly put us in a relaxed mood. There is another metric that shows promise – *Ki*. No wonder it is the case, as *Ki* directly measures the affinity in your couple, what a convenient metric!
+Seems like everyone is talking about *IC50* out there! It is the amount of ligand that makes you slow down to exactly a half of your activity. We understand why you prefer this metric – we too would love to find someone to quickly put us in a relaxed mood. There is another metric that shows promise – *Ki*. No wonder it is the case, as *Ki* directly measures the affinity in your couple, what a convenient metric! To make things easier, we will use *pIC50* and *pKi*. This way, bigger values would mean better binding.
 
-Our R&D department found that *IC50* and *Ki* are, in fact, very correlated. So, good news, we can safely rely on either metric to find your match!
+Our R&D department found that *pIC50* and *pKi* are, in fact, very correlated. So, good news, we can safely rely on either metric to find your match!
 
 <!--HERE TODO  : reshape the image in the container -->
 
 <button onclick="togglePlot('kiIc50Plot')" style="padding: 10px 20px; margin: 20px 0; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
-  Ki vs IC50 Correlation
+  How are they correlated? 
 </button>
 
 <div id="kiIc50Plot" style="display: none;">
@@ -73,59 +73,62 @@ The success in our matchmaking business depends on how accurately we gather info
 
 RDKit, a chemical detective agency and our dearest contractor, shared its insights with us.  
 
-## Categorical Features: Functional Group 
+## Categorical Features: Functional Groups 
+
+Sometimes a smile or a glance can make you fall in love. As it turns out, in the chemical world functional groups are the ones that can produce some chemistry. Let's see what kind of groups our ligands have.
 
 <div class="image-container2">
-  <button class="image-button"> See Functional Groups </button>
+  <button class="image-button"> See functional groups </button>
     <div class="image-box">
       <figure>
-        <img src="assets/plots/functional_groups.png" alt="Plot 1" />
+        <img src="assets/plots/functional_groups.png" alt="Groups" />
         <figcaption> Functional Groups </figcaption>
       </figure>
   </div>
 </div>
 
 ## Continuous Features 
-Now let's consider some continuous features. 
+
+Okay, but what about features like weight and the amount of electrons available for some bond making? RDKit has some statistics for that too!
 
 <!--HERE TODO  reshape the image in the container-->
 <div class="image-container2">
-  <button class="image-button"> Chemical Features Distribution </button>
+  <button class="image-button"> Distributions of continuous features </button>
     <div class="image-box">
       <figure>
-        <img src="assets/plots/chemchar2.png" alt="chemchar" />
-        <figcaption> chemical characterization </figcaption>
+        <img src="assets/plots/chemchar2.png" alt="Features" />
       </figure>
   </div>
 </div>
 
-### Popular matches!
-Some of our ligands were popular and were tested for many matches. 45 were involved in more than 25 dates: we can observe that the standard deviation of the success of their matches is pretty different across them.
+Of course, we asked RDKit detectives to investigate how different chemical features affect binding. As it turned out, the mutual information between the affinity metrics and the chemical properties is close to zero. Well, love is more complicated than some obvious features!
+
+<div class="image-container2">
+  <button class="image-button"> Take a closer look </button>
+    <div class="image-box">
+      <figure>
+        <img src="assets/plots/mutual_information.png" alt="Mutual" />
+        <figcaption> Mutual information between metrics and chemical characterization </figcaption>
+      </figure>
+  </div>
+</div>
+
+## Dating Professionals
+
+Does dating experience matter to you? Some of our ligands have their calendars full of dates. 45 of our candidates were involved in more than 25 dates!  
 
 <div >
   <!-- First Plot -->
-  <img src="assets/plots/top_matches.png" alt="UMAP pIC Morgan">
+  <img src="assets/plots/top_matches.png" alt="Dates">
 </div>
-
-
-The mutual information between the metrics and the chemical properties is close to zero. This suggests that chemical properties and binding metrics are not related when taken as they are. This motivates the use of embeddings to try to have a more complex representation of the ligands.
-
-<div class="image-container2">
-  <button class="image-button"> Mutual Info Metric vs Chem Characterization </button>
-    <div class="image-box">
-      <figure>
-        <img src="assets/plots/mutual_information.png" alt="chemchar" />
-        <figcaption> Mutual Information bewteen metrcs and chemical characterization </figcaption>
-      </figure>
-  </div>
-</div>
-
 
 # A Match Made In Heaven  
 
+Embedding spaces are nice. There, we can see the ligands for what they really are. In an embedding space, inessential information is cut out. As a modern-day matrimony agency, we propose a variety of embedding spaces for you to choose from. If you do not care about the weight or the logP of your partner – which we totally support – take a look at our catalogues of candidates based on several embedding spaces.
+
 ## Embedding Space From Rdkit
 
-Well, let's go all-in and look for every available piece of information regarding the chemistry of our candidates! Proud of our partnership with RDKit, an undercover chemical detective agency, we chemically profiled the candidates using all Descriptors provided by RDKit. Of course, nobody would want to go through such extensive profiling for the many candidates in our catalogues – kinases have better things to do – that's why we propose a conveniently rendered summary obtained through dimensionality reduction techniques, so that our clients could quickly skim through the pages of available ligands and skip a heartbeat when seeing _the one_.
+Well, let's go all-in and look for every available piece of information regarding the chemistry of our candidates! Proud of our partnership with RDKit, an undercover chemical detective agency, we chemically profiled the candidates using all Descriptors provided by RDKit. Of course, nobody would want to go through such extensive profiling for the many candidates in our catalogues – kinases have better things to do – that's why we propose a conveniently rendered summary obtained through dimensionality reduction techniques, so that our clients could quickly skim through the pages of available ligands and skip a heartbeat when seeing the one. The UMAP plots below show the embedding space of the ligands based on their RDKit descriptors and colored by their binding metrics in order to see if ligand groups can be clustered by their descriptors and if these clusters are related to the binding metrics.
 
 <div >
   <img src="assets/plots/umap_pIC_RDKIT_descriptors.png"  >
@@ -133,28 +136,25 @@ Well, let's go all-in and look for every available piece of information regardin
   <img src="assets/plots/umap_pKi_RDKIT_descriptors.png" >
 </div>
 <div class="image-container2">
-  <button class="image-button"> PCA componants </button>
+  <button class="image-button"> Show contributions to PCA components </button>
     <div class="image-box">
       <figure>
         <iframe src="assets/plots/pca_features_RDKIT_descriptors.html" width="100%" height="400px"></iframe>
-        <figcaption> PCA componants </figcaption>
       </figure>
   </div>
 </div>
 
-
-
 <div style="text-align: center;">
   <!-- First Plot -->
   <img src="assets/plots/umap_target_RDKIT_descriptors.png" >
-  <p><em>RDKIT embedding space color per targets.</em></p>
+  <p><em>UMAP of PCA-reduced Descriptors</em></p>
 </div>
 
-Looks like our clients do have their preferences when it comes to binding partners. Maybe we can go even further and uncover some deeply rooted preferences that even kinases do not know about? 
+As some ligands cluster together, we conclude that our clients do have their preferences when it comes to binding partners. Unfortunately, we still don't understand them well enough to predict binding affinities. Maybe we can go further and uncover some deeply rooted preferences that even kinases do not know about? 
 
-## Mol2Vec embedding space
+## Mol2Vec Embedding Space
 
-Inspired by our insightful partnership with RDKit, we contacted our next contractor – Mol2Vec. This agency does the dirty work of finding a meaningful representation of chemical properties and similarities between molecules for you. It considers the ligands for what they, in essence, are – atoms connected by bonds – and constructs vectors that capture everything you need to know. Straight to the point, so that our kinases do not lose their precious time on ligands that weren't meant for them from the beginning. Once again, we care about the comfort of our customers, that's way we propose a dimensionally reduced summary of our findings.
+Inspired by our insightful partnership with RDKit, we contacted our next contractor – Mol2vec. This agency does the dirty work of finding a meaningful representation of chemical properties and similarities between molecules for you. It considers the ligands for what they, in essence, are – atoms connected by bonds – and constructs vectors that capture everything you need to know. Straight to the point, so that our kinases do not lose their precious time on ligands that weren't meant for them from the beginning. Once again, we care about the comfort of our customers, that's way we propose a dimensionally reduced summary of our findings.
 
 <div>
   <!-- First Plot -->
@@ -164,11 +164,10 @@ Inspired by our insightful partnership with RDKit, we contacted our next contrac
 </div>
 
 <div class="image-container2">
-  <button class="image-button"> PCA componants </button>
+  <button class="image-button"> Show contributions to PCA components </button>
     <div class="image-box">
       <figure>
         <iframe src="assets/plots/pca_features_Mol2Vec.html" width="100%" height="400px"></iframe>
-        <figcaption> PCA componants </figcaption>
       </figure>
   </div>
 </div>
@@ -177,11 +176,10 @@ Inspired by our insightful partnership with RDKit, we contacted our next contrac
 <div style="text-align: center;">
   <!-- First Plot -->
   <img src="assets/plots/umap_target_Mol2Vec.png" >
-  <p><em>Mol2Vec embedding space color per targets</em></p>
+  <p><em>UMAP of PCA-reduced Mol2vec</em></p>
 </div>
 
-This looks ... convoluted. We contacted Mol2Vec for further explanation but they declined responsibility and accused us of providing ligands that were too structurally similar to be separated. Well, this partnership will not last any longer!
-
+This doesn't look much better... We contacted Mol2vec for further explanation but they declined responsibility and accused us of providing ligands that were too structurally similar to be separated. Well, this partnership will not last any longer!
 
 ## Morgan Fingerprints Embedding Space 
 
@@ -195,11 +193,10 @@ Luckily, there is no shortage of embedding contractors and Morgan Fingerprints c
 </div>
 
 <div class="image-container2">
-  <button class="image-button"> PCA componants </button>
+  <button class="image-button"> Show contributions to PCA components </button>
     <div class="image-box">
       <figure>
         <iframe src="assets/plots/pca_features_Morgan_Fingerprint.html" width="100%" height="400px"></iframe>
-        <figcaption> PCA componants </figcaption>
       </figure>
   </div>
 </div>
@@ -208,13 +205,14 @@ Luckily, there is no shortage of embedding contractors and Morgan Fingerprints c
 <div style="text-align: center;">
   <!-- First Plot -->
   <img src="assets/plots/umap_target_Morgan_Fingerprint.png" >
-  <p><em>Morgan Fingerprint embedding space color per targets</em></p>
+  <p><em>UMAP of PCA-reduced Morgan fingerprints</em></p>
 </div>
 
+Hmmm, almost the same picture. But do not worry, we will test everything to find the right embedding space for you! 
 
-## Full Embedding Space
+## Concatenated Embedding Space
 
-We have gathered all the embeddings from our contractors and combined them into a single, full embedding space. This way, our clients can have a comprehensive overview of the ligands and quickly find the one that makes their binding pocket tingle.
+We have gathered all the embeddings from our contractors and combined them into a single embedding space. This way, our clients can have a comprehensive overview of the ligands and quickly find the one that makes their binding pocket tingle.
 
 <div >
   <!-- First Plot -->
@@ -224,11 +222,10 @@ We have gathered all the embeddings from our contractors and combined them into 
 </div>
 
 <div class="image-container2">
-  <button class="image-button"> PCA componants </button>
+  <button class="image-button"> Show contributions to PCA components </button>
     <div class="image-box">
       <figure>
         <iframe src="assets/plots/pca_features_full.html" width="100%" height="400px"></iframe>
-        <figcaption> PCA componants </figcaption>
       </figure>
   </div>
 </div>
@@ -237,9 +234,10 @@ We have gathered all the embeddings from our contractors and combined them into 
 <div style="text-align: center;">
   <!-- First Plot -->
   <img src="assets/plots/umap_target_full.png" alt="UMAP pIC all" >
-  <p><em>Full embedding space color per targets</em></p>
+  <p><em>UMAP of PCA-reduced concatenated embedding space</em></p>
 </div>
 
+All our efforts to get that! No, we will not stop there. Let's explore what machine learning has to offer!
 
 # Data-Driven Cupid
 
@@ -247,18 +245,26 @@ Here is the latest hit in matchmaking – predicting binding affinities using ma
 
 ## Multilayer Perceptron
 
-In order to predict binding affinities, we trained a multilayer perceptron that took the concatenated embeddings as input. Sadly many of our clients were left disappointed as the model was not able to predict the binding affinities with a satisfying accuracy.
+Our economic tier model is a multilayer perceptron that takes the concatenated embeddings as input. Cheap, reliable, and fast. Training with all the new features, from shiny hyperparameter tuning to the latest techniques in data preprocessing, we are ready to make some predictions!
 
-### Graph Neural Network
+What a shame! Many of our clients were disappointed as the model was not able to predict the binding affinities with a satisfying accuracy. The R&D department insisted that machine learning would bring us billions, so in our last effort let's try a more powerful model.  
 
-Inspired by what is considered to be state of the art in terms of ML models in drug discovery, we trained our own graph neural network (GNN) to predict affinities. Each ligand was represented as a graph containing the information about its structure. We added some relevant RDKit Descriptors to the nodes and some bond information to the edges of the graphs. Then we trained a GNN that took in input a graph and outputed the pIC50 of the ligand. The model was still not able to predict the binding affinities with a satisfying accuracy. Actually both models had a similar performance with a R² that most of our clients would consider as a deal breaker.
+## Graph Neural Network
+
+For our truly special clients, we have a special model. Directly inspired by what is considered to be state of the art in terms of ML models in drug discovery, we trained our own graph neural network (GNN) to predict affinities. Each ligand was represented as a graph containing the information about its structure. We added some relevant RDKit Descriptors to the nodes and some bond information to the edges of the graphs. Then we trained a GNN that took in input a graph and was trained to output the _pIC50_ of the ligand. Hours of training and tuning later, we were ready to make some predictions. The model was still not able to predict the binding affinities with a satisfying accuracy.
+
+To be honest, both our models had similar performances with a R² that most of our clients would consider a deal breaker. Proof that even the most advanced models can't replace the human touch in matchmaking.
 
 <div >
   <!-- First Plot -->
   <img src="assets/plots/r_sq.png"  >
 </div>
 
-### Closing Words
+# Closing Words
 
-As it turns out, being a matchmaking agency is no joke. We found our disappointed client listening to _You Should Be Stronger Than Me_ by Amy Winehouse on repeat. As we speak BindingDB is experiencing a severe heartbreak ti is not available anymore, we trust that with our future services and newfound knowledge they will come back strong and ready to find their perfect match !
+This was a rollercoaster! As it turns out, being a matchmaking agency is no joke. We found one of our disappointed clients crying while listening to _You Should Be Stronger Than Me_ by Amy Winehouse on repeat. What can we say? The heart wants what it wants.
+
+<p align="center">
+  <img src="assets/images/heart.png" width="25%"/>
+</p>
 
