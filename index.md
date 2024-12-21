@@ -37,7 +37,6 @@ Seems like everyone is talking about *IC50* out there! It is the amount of ligan
 
 Our R&D department found that *pIC50* and *pKi* are, in fact, very correlated. So, good news, we can safely rely on either metric to find your match!
 
-<!--HERE TODO  : reshape the image in the container -->
 
 <button onclick="togglePlot('kiIc50Plot')" style="padding: 10px 20px; margin: 20px 0; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
   How are they correlated? 
@@ -91,7 +90,6 @@ Sometimes a smile or a glance can make you fall in love. As it turns out, in the
 
 Okay, but what about features like weight and the amount of electrons available for some bond making? RDKit has some statistics for that too!
 
-<!--HERE TODO  reshape the image in the container-->
 <div class="image-container2">
   <button class="image-button"> Distributions of continuous features </button>
     <div class="image-box">
@@ -172,7 +170,6 @@ Inspired by our insightful partnership with RDKit, we contacted our next contrac
   </div>
 </div>
 
-<!--HERE TODO  WTF  does not work -->
 <div style="text-align: center;">
   <!-- First Plot -->
   <img src="assets/plots/umap_target_Mol2Vec.png" >
